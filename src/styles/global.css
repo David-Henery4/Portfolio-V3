@@ -2,6 +2,7 @@
 @import "./gradient/gradient.css";
 
 @theme {
+  --color-*: initial;
   --color-bg1: rgb(108, 0, 162);
   --color-bg2: rgb(0, 17, 82);
   --color1: 18, 113, 255;
@@ -12,5 +13,12 @@
   --color-interactive: 140, 100, 255;
   --circle-size: 80%;
   --blending: hard-light;
+  --color-white: #ffffff;
+  --color-black: #000;
+
+  /* Grid-Columns */
+  --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;
+
+
 }
 

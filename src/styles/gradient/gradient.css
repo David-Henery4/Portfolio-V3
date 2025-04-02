@@ -6,15 +6,18 @@
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
   top: 0;
   left: 0;
+  /* Might have to change z-index? */
+  z-index: -1; 
 }
 
-svg {
+/* Will add back */
+/* svg {
   position: fixed;
   top: 0;
   left: 0;
   width: 0;
   height: 0;
-}
+} */
 
 .gradients-container {
   filter: url(#goo) blur(40px);
