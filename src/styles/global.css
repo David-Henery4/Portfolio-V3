@@ -15,10 +15,14 @@
   --blending: hard-light;
   --color-white: #ffffff;
   --color-black: #000;
+  --color-orange: #EF9A4E;
 
   /* Grid-Columns */
   --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;
-
-
 }
 
+.header-circle {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  clip-path: inset(-30% 0% 0% 0% round 0% 0% 50% 50%);
+}
