@@ -13,9 +13,10 @@
   --color-interactive: 140, 100, 255;
   --circle-size: 80%;
   --blending: hard-light;
-  --color-white: #ffffff;
+  --color-white: #EBF1F4;
   --color-black: #000;
   --color-orange: #EF9A4E;
+  --color-orange-shade: #EAB27F;
 
   /* Grid-Columns */
   --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;

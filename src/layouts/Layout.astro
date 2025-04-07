@@ -1,21 +1,36 @@
 ---
-import './src/styles/global.css'
-import "../components/Navbar.astro"
-import Navbar from '../components/Navbar.astro'
+interface Props {
+  title: string;
+  description: string;
+}
+
+import "./src/styles/global.css";
+import "../components/Navbar.astro";
+const {
+  title = "David Henery | Web Developer Portfolio",
+  description = "Portfolio of David Henery, a web developer specializing in modern, responsive websites, UI/UX design, and front-end development.",
+} = Astro.props;
+import Navbar from "../components/Navbar.astro";
+import GradientStyles from "@components/GradientStyles.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>David Henery: Web Developer</title>
-	</head>
-	<body>
-    <Navbar/>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="web developer, portfolio, front-end, back-end, full-stack, UI design, responsive websites, PHP, JavaScript, Tailwind CSS, React, NextJS, mySQL, AstroJS, VueJS, Figma"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="relative">
+    <Navbar />
+    <slot />
+    <GradientStyles />
+  </body>
 </html>
-

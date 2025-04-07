@@ -1,0 +1,61 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import aboutMeImageLg from "@assets/images/about-me-img-large.png";
+import { Heading, BaseText } from "@components/reusable/text";
+import { PrimaryButton } from "@components/reusable";
+import socialData from "@local-data/socialData";
+---
+
+<Layout
+  title="David Henery | About Me"
+  description="Find out about David Henery, a web developer focused on building clean, responsive websites with great user experiences. Learn more about me, my journey, skills, and my values behind the code."
+>
+  <main
+    class="w-full py-12 px-6 flex flex-col justify-center items-center gap-10"
+  >
+    <div class="">
+      <Image src={aboutMeImageLg} alt="David Henery | Web Developer" />
+    </div>
+
+    <div class="text-center">
+      <Heading headingType="primary"> About Me </Heading>
+
+      <div class="w-full mt-6">
+        <BaseText>
+          I am a driven frontend developer with a love for exploring new
+          technologies and putting them to use in creating one-of-a-kind digital
+          experiences. I place a strong emphasis on creating responsive projects
+          and have a sharp eye for detail to ensure a seamless user experience.
+          When I'm not coding, I enjoy watching football, listening to music,
+          reading, cooking and trying out spicy foods.
+        </BaseText>
+
+        <div
+          class="w-full mt-12 flex flex-col justify-center items-center gap-8"
+        >
+
+          <PrimaryButton />
+
+          <div class="w-full flex justify-center items-center gap-6">
+            {
+              socialData.map((social) => {
+                return (
+                  <a href={social.url} class="w-10 h-10">
+                    <span class="sr-only">{social.title}</span>
+                    {<social.icon />}
+                  </a>
+                );
+              })
+            }
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</Layout>

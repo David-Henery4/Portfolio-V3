@@ -1,0 +1,30 @@
+---
+interface Props {
+  headingType: "primary" | "secondary" | "third";
+  classes?: string[]
+}
+const { headingType = "primary", classes } = Astro.props;
+---
+
+<!-- Might not need most of these -->{
+  headingType === "primary" && (
+    <h1 class:list={["text-5xl", "font-bold", "font-light", "text-white", classes]}>
+      <slot />
+    </h1>
+  )
+}
+
+{
+  headingType === "secondary" && (
+    <h2>
+      <slot />
+    </h2>
+  )
+}
+{
+  headingType === "third" && (
+    <h3>
+      <slot />
+    </h3>
+  )
+}
