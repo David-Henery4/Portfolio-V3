@@ -20,6 +20,8 @@
 
   /* Grid-Columns */
   --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;
+
+  --grid-template-columns-skills: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .header-circle {

@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Heading } from "@components/reusable/text";
+import SkillContainer from "@components/skills/SkillContainer.astro";
+import skillsData from "@local-data/skillsData";
+import type { ACTION_ERROR_CODES } from "astro:actions";
+---
+
+<Layout
+  title="Skills | David Henery | Web Developer"
+  description="Find out about David Henery's web development skills, including front-end frameworks, back-end technologies, and UI/UX design tools used to craft modern, responsive websites."
+>
+  <main class="w-full py-12 px-6">
+    <Heading headingType="primary" classes={["text-center"]}> Skills </Heading>
+    <div class="w-full mt-10 grid gap-6 grid-cols-skills">
+      {skillsData.map((skill) => {
+        return <SkillContainer {...skill}/>
+      })}
+    </div>
+  </main>
+</Layout>

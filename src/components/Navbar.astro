@@ -7,11 +7,14 @@ import logo from "../assets/icons/logo-red.png";
   class="w-full px-6 py-3 border-b border-white flex justify-between items-center"
 >
   <div class="w-16 h-auto">
-    <img
-      class="object-center object-cover"
-      src={logo?.src}
-      alt="David's Logo"
-    />
+    <a href="/" aria-label="Go to homepage" title="Go to homepage">
+      <span class="sr-only">Go to homepage</span>
+      <img
+        class="object-center object-cover"
+        src={logo?.src}
+        alt="David's personal logo"
+      />
+    </a>
   </div>
 
   <!-- <menu>
