@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  name: string;
+  isTextarea?: boolean;
+}
+const { id, label, name, isTextarea } = Astro.props;
+---
+
+{
+  isTextarea ? (
+    <div class="relative w-full flex flex-col justify-center items-start">
+      <textarea
+        class="w-full peer min-h-64 py-2 px-4 rounded-sm resize-none outline-none bg-white/15 placeholder:capitalize"
+        id={id}
+        name={name}
+        placeholder={name}
+      />
+      <label
+        class="absolute text-orange capitalize left-4 text-xs -top-6 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-focus:-top-6 peer-focus:text-xs peer-focus:text-orange"
+        for={id}
+      >
+        {label}
+      </label>
+    </div>
+  ) : (
+    <div class="relative w-full flex flex-col justify-center items-start">
+      <input
+        class="peer w-full rounded-sm py-2 px-4 outline-none placeholder:capitalize bg-white/15"
+        type="text"
+        id={id}
+        name={name}
+        placeholder={name}
+      />
+      <label
+        class="absolute text-orange capitalize left-4 text-xs -top-6 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-focus:-top-6 peer-focus:text-xs peer-focus:text-orange"
+        for={id}
+      >
+        {label}
+      </label>
+    </div>
+  )
+}

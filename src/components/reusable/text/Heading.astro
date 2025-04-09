@@ -8,7 +8,7 @@ const { headingType = "primary", classes } = Astro.props;
 
 <!-- Might not need most of these -->{
   headingType === "primary" && (
-    <h1 class:list={["text-5xl", "font-bold", "font-light", "text-white", classes]}>
+    <h1 class:list={["text-5xl", "font-bold", "font-light", classes]}>
       <slot />
     </h1>
   )

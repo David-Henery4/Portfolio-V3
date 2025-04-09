@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
+import Form from "@components/contact/Form.astro";
 ---
 
 <Layout
@@ -9,6 +10,6 @@ import { Heading } from "@components/reusable/text";
 >
   <main class="w-full py-12 px-6">
     <Heading headingType="primary" classes={["text-center"]}> Contact </Heading>
-    
+    <Form/>
   </main>
 </Layout>
