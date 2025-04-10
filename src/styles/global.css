@@ -29,3 +29,9 @@
   border-top-right-radius: 50%;
   clip-path: inset(-30% 0% 0% 0% round 0% 0% 50% 50%);
 }
+
+/** REMOVE INPUT HISTORY **/
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}

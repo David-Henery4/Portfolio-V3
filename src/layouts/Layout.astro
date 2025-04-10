@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 import Navbar from "../components/Navbar.astro";
 import GradientStyles from "@components/GradientStyles.astro";
+import Sidebar from "@components/Sidebar.astro";
 ---
 
 <!doctype html>
@@ -26,10 +27,15 @@ import GradientStyles from "@components/GradientStyles.astro";
       name="keywords"
       content="web developer, portfolio, front-end, back-end, full-stack, UI design, responsive websites, PHP, JavaScript, Tailwind CSS, React, NextJS, mySQL, AstroJS, VueJS, Figma"
     />
+
+    <!-- Scripts -->
+    <script src="src/js/sidebar.ts"></script>
+
     <title>{title}</title>
   </head>
   <body class="relative min-h-[100svh] text-white">
     <Navbar />
+    <Sidebar />
     <slot />
     <GradientStyles />
   </body>
