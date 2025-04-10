@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
+import ProjectCard from "@components/projects/ProjectCard.astro";
 ---
 
 <Layout
@@ -11,5 +12,13 @@ import { Heading } from "@components/reusable/text";
     <Heading headingType="primary" classes={["text-center"]}>
       My Projects
     </Heading>
+    <div class="w-full mt-16 grid grid-cols-projects justify-center gap-y-12 gap-x-8">
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+    </div>
   </main>
 </Layout>

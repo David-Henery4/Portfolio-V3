@@ -22,6 +22,8 @@
   --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;
 
   --grid-template-columns-skills: repeat(auto-fit, minmax(220px, 1fr));
+
+  --grid-template-columns-projects: repeat(auto-fit, minmax(250px,.75fr));
 }
 
 .header-circle {

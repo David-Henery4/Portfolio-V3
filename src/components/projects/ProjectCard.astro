@@ -1,0 +1,41 @@
+---
+import projectImage from "@assets/placeholders/project-placeholder-image.png";
+import { Image } from "astro:assets";
+import ArrowRight from "@assets/icons/ArrowRight.astro";
+---
+
+<article class="w-full">
+  <figure class="w-full aspect-video">
+    <Image
+      class="w-full min-h-56 h-full max-h-80 object-center object-cover"
+      src={projectImage}
+      alt="Screenshot of The Munch Hut project"
+    />
+  </figure>
+
+  <div class="mt-4">
+    <p class="text-xs uppercase tracking-wide">Development</p>
+
+    <h2 class="text-lg font-semibold mt-1">The Munch Hut</h2>
+
+    <p class="text-sm mt-2">
+      We've all experienced the chaos of multiple spreadsheets, tracking and
+      insight tools, and scrambling for the right data at the right time.
+    </p>
+
+    <div class="w-full mt-3 flex justify-start items-center gap-6 text-sm">
+      <a class="inline-flex justify-center items-center gap-1 py-1" href="#">
+        Repo
+        <span class="mt-1">
+          <ArrowRight />
+        </span>
+      </a>
+      <a
+        href="#"
+        class="bg-orange py-[6px] px-4 rounded-md hover:bg-orange-shade"
+      >
+        Live Project
+      </a>
+    </div>
+  </div>
+</article>
