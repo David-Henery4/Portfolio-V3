@@ -3,8 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 import aboutMeImageLg from "@assets/images/about-me-img-large.png";
 import { Heading, BaseText } from "@components/reusable/text";
-import { PrimaryButton } from "@components/reusable";
-import socialData from "@local-data/socialData";
+import { PrimaryButton, Socials } from "@components/reusable";
 ---
 
 <Layout
@@ -36,18 +35,7 @@ import socialData from "@local-data/socialData";
         >
           <PrimaryButton />
 
-          <div class="flex justify-center items-center gap-6">
-            {
-              socialData.map((social) => {
-                return (
-                  <a href={social.url} class="w-10 h-10">
-                    <span class="sr-only">{social.title}</span>
-                    {<social.icon />}
-                  </a>
-                );
-              })
-            }
-          </div>
+          <Socials/>
         </div>
       </div>
     </div>

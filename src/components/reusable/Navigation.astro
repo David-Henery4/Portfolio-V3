@@ -1,0 +1,33 @@
+---
+interface Props {
+  classes?: string[];
+}
+import navdata from "@local-data/navdata";
+import Socials from "./Socials.astro";
+const pathname = Astro.originPathname;
+const { classes } = Astro.props;
+---
+
+<section
+  class="w-full px-6 py-12 flex flex-col justify-center items-start gap-16 tablet:flex-row tablet:items-center tablet:gap-6 tablet:p-0"
+  class:list={classes}
+>
+  <menu
+    id="links-container"
+    class="w-full text-3xl flex flex-col justify-start items-start gap-8 tablet:flex-row tablet:text-base tablet:justify-center tablet:gap-[18px]"
+  >
+    {
+      navdata.map((navItem) => {
+        const activeLink = navItem.route === pathname;
+        return (
+          <li
+            class={`link-item capitalize ${activeLink && "text-orange underline underline-offset-6"} hover:text-orange-shade`}
+          >
+            <a href={navItem.route}>{navItem.pageName}</a>
+          </li>
+        );
+      })
+    }
+  </menu>
+  <Socials classes={["tablet:w-6", "tablet:h-6"]} />
+</section>

@@ -1,17 +1,15 @@
 ---
-import navdata from "@local-data/navdata.ts";
 import BurgerIcon from "@assets/icons/BurgerIcon.astro";
 import LogoIcon from "@assets/icons/LogoIcon.astro";
+import { Navigation } from "./reusable";
 ---
 
 <nav
-  class="w-full px-layout-mob py-3 border-b border-white flex justify-between items-center mobile:px-layout-tab"
+  class="w-full px-layout-mob py-3 border-b border-white flex justify-between items-center mobile:px-layout-tab tablet:gap-6"
 >
   <LogoIcon />
 
-  <!-- <menu>
-    
-  </menu> -->
+  <Navigation classes={["hidden", "tablet:flex"]} />
 
   <BurgerIcon />
 </nav>

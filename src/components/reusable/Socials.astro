@@ -1,0 +1,20 @@
+---
+interface Props {
+  classes?: string[];
+}
+import socialData from "@local-data/socialData";
+const { classes } = Astro.props;
+---
+
+<div class="flex justify-center items-center gap-6">
+  {
+    socialData.map((social) => {
+      return (
+        <a href={social.url} class="w-10 h-10" class:list={classes}>
+          <span class="sr-only">{social.title}</span>
+          {<social.icon />}
+        </a>
+      );
+    })
+  }
+</div>
