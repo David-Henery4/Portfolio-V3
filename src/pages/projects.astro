@@ -8,8 +8,7 @@ import ProjectCard from "@components/projects/ProjectCard.astro";
   title="Projects | David Henery | Web Developer"
   description="Explore featured web development projects by David Henery, showcasing a range of projects, built with different modern technologies."
 >
-  <main class="w-full py-12 px-6">
-
+  <main class="w-full py-12 px-layout-mob mobile:px-layout-tab">
     <Heading headingType="primary" classes={["text-center"]}>
       My Projects
     </Heading>
@@ -34,7 +33,5 @@ import ProjectCard from "@components/projects/ProjectCard.astro";
       <ProjectCard />
       <ProjectCard />
     </div>
-
   </main>
-
 </Layout>

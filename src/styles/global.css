@@ -2,6 +2,17 @@
 @import "./gradient/gradient.css";
 
 @theme {
+  /* Breakpoints */
+  --breakpoint-*: initial;
+  --breakpoint-mobile: 29.6875em; /* 475px */
+
+  /* Spacing */
+  --spacing-layout-mob: 24px;
+  --spacing-layout-tab: 40px;
+  --spacing-layout-lap: 90px;
+  --spacing-layout-desk: 140px;
+
+  /* Colours */
   --color-*: initial;
   --color-bg1: rgb(108, 0, 162);
   --color-bg2: rgb(0, 17, 82);
@@ -18,11 +29,8 @@
   --color-orange: #EF9A4E;
   --color-orange-shade: #EAB27F;
 
-  /* Grid-Columns */
-  --grid-template-columns-mob: 24px repeat(10, 1fr) 24px;
-
+  /* Grid-Columns */  
   --grid-template-columns-skills: repeat(auto-fit, minmax(220px, 1fr));
-
   --grid-template-columns-projects: repeat(auto-fit, minmax(250px,.75fr));
 }
 
