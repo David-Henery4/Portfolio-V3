@@ -1,12 +1,32 @@
 ---
-import {TextInput, SubmitBtn} from "./form-comps"
-
+import { TextInput, SubmitBtn } from "./form-comps";
 ---
 
-<form class="mt-16 w-full grid gap-9">
-  <TextInput id="name" label="name" name="name" />
-  <TextInput id="re" label="re" name="re" />
-  <TextInput id="email" label="email" name="email" />
-  <TextInput id="message" label="message" name="message" isTextarea={true} />
-  <SubmitBtn/>
+<form class="mt-16 w-full grid gap-9 tablet:gap-x-4">
+  <TextInput
+    id="name"
+    label="name"
+    name="name"
+    classes={["tablet:col-start-1", "tablet:col-end-2"]}
+  />
+  <TextInput
+    id="re"
+    label="re"
+    name="re"
+    classes={["tablet:col-start-2", "tablet:col-end-3"]}
+  />
+  <TextInput
+    id="email"
+    label="email"
+    name="email"
+    classes={["tablet:col-start-1", "tablet:col-end-3"]}
+  />
+  <TextInput
+    id="message"
+    label="message"
+    name="message"
+    isTextarea={true}
+    classes={["tablet:col-start-1", "tablet:col-end-3"]}
+  />
+  <SubmitBtn />
 </form>

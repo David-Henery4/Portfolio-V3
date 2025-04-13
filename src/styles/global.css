@@ -5,6 +5,8 @@
   /* Breakpoints */
   --breakpoint-*: initial;
   --breakpoint-mobile: 29.6875em; /* 475px */
+  --breakpoint-small-tablet: 35.9375em; /* 575px */
+  --breakpoint-tablet: 42.1875em; /* 675px */
 
   /* Spacing */
   --spacing-layout-mob: 24px;

@@ -4,13 +4,17 @@ interface Props {
   label: string;
   name: string;
   isTextarea?: boolean;
+  classes?: string[];
 }
-const { id, label, name, isTextarea } = Astro.props;
+const { id, label, name, isTextarea, classes } = Astro.props;
 ---
 
 {
   isTextarea ? (
-    <div class="relative w-full flex flex-col justify-center items-start">
+    <div
+      class="relative w-full flex flex-col justify-center items-start"
+      class:list={classes}
+    >
       <textarea
         class="w-full peer min-h-64 py-2 px-4 rounded-sm resize-none outline-none bg-white/15 placeholder:capitalize"
         id={id}
@@ -25,7 +29,10 @@ const { id, label, name, isTextarea } = Astro.props;
       </label>
     </div>
   ) : (
-    <div class="relative w-full flex flex-col justify-center items-start">
+    <div
+      class="relative w-full flex flex-col justify-center items-start"
+      class:list={classes}
+    >
       <input
         class="peer w-full rounded-sm py-2 px-4 outline-none placeholder:capitalize bg-white/15"
         type="text"
