@@ -33,7 +33,9 @@ import Sidebar from "@components/Sidebar.astro";
 
     <title>{title}</title>
   </head>
-  <body class="relative min-h-[100svh] text-white">
+  <body
+    class="relative min-h-[100svh] text-white laptop:flex laptop:justify-center laptop:items-center"
+  >
     <Navbar />
     <Sidebar />
     <slot />

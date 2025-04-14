@@ -7,6 +7,7 @@
   --breakpoint-mobile: 29.6875em; /* 475px */
   --breakpoint-small-tablet: 35.9375em; /* 575px */
   --breakpoint-tablet: 42.1875em; /* 675px */
+  --breakpoint-laptop: 64em; /* 1024px */
 
   /* Spacing */
   --spacing-layout-mob: 24px;
@@ -32,7 +33,7 @@
   --color-orange-shade: #EAB27F;
 
   /* Grid-Columns */  
-  --grid-template-columns-skills: repeat(auto-fit, minmax(220px, 1fr));
+  --grid-template-columns-skills: repeat(auto-fit, minmax(200px, 1fr));
   --grid-template-columns-projects: repeat(auto-fit, minmax(250px,.75fr));
 }
 

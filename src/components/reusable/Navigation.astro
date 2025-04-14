@@ -9,12 +9,12 @@ const { classes } = Astro.props;
 ---
 
 <section
-  class="w-full px-6 py-12 flex flex-col justify-center items-start gap-16 tablet:flex-row tablet:items-center tablet:gap-6 tablet:p-0"
+  class="w-full px-6 py-12 flex flex-col justify-center items-start gap-16 tablet:flex-row tablet:items-center tablet:gap-6 tablet:p-0 laptop:flex-col laptop:w-auto laptop:gap-12 laptop:flex-[1] laptop:justify-between"
   class:list={classes}
 >
   <menu
     id="links-container"
-    class="w-full text-3xl flex flex-col justify-start items-start gap-8 tablet:flex-row tablet:text-base tablet:justify-center tablet:gap-[18px]"
+    class="w-full text-3xl flex flex-col justify-start items-start gap-8 tablet:flex-row tablet:text-base tablet:justify-center tablet:gap-[18px] laptop:flex-col laptop:gap-14"
   >
     {
       navdata.map((navItem) => {
