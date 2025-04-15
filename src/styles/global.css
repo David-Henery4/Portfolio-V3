@@ -8,14 +8,14 @@
   --breakpoint-small-tablet: 35.9375em; /* 575px */
   --breakpoint-tablet: 42.1875em; /* 675px */
   --breakpoint-laptop: 64em; /* 1024px */
+  --breakpoint-desktop: 70.25em; /* 1124px */
   --breakpoint-lgDesktop: 137.5em; /* 2200px */
 
   /* Spacing */
   --spacing-layout-mob: 24px;
   --spacing-layout-tab: 40px;
   --spacing-layout-lap: 96px 40px 96px 161px;
-  /* --spacing-layout-lap: 90px; */
-  --spacing-layout-desk: 140px;
+  --spacing-layout-desk: 96px 90px 96px 211px;
 
   /* Colours */
   --color-*: initial;
