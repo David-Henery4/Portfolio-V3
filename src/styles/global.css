@@ -8,11 +8,13 @@
   --breakpoint-small-tablet: 35.9375em; /* 575px */
   --breakpoint-tablet: 42.1875em; /* 675px */
   --breakpoint-laptop: 64em; /* 1024px */
+  --breakpoint-lgDesktop: 137.5em; /* 2200px */
 
   /* Spacing */
   --spacing-layout-mob: 24px;
   --spacing-layout-tab: 40px;
-  --spacing-layout-lap: 90px;
+  --spacing-layout-lap: 96px 40px 96px 161px;
+  /* --spacing-layout-lap: 90px; */
   --spacing-layout-desk: 140px;
 
   /* Colours */
@@ -35,6 +37,10 @@
   /* Grid-Columns */  
   --grid-template-columns-skills: repeat(auto-fit, minmax(200px, 1fr));
   --grid-template-columns-projects: repeat(auto-fit, minmax(250px,.75fr));
+  --grid-template-columns-LGDesktop: min-content 1fr;
+  
+  /* Grid-Rows */
+  --grid-template-rows-LGDesktop: min-content;
 }
 
 .header-circle {
