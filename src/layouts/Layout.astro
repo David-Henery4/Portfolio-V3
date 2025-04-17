@@ -13,6 +13,10 @@ const {
 import Navbar from "../components/Navbar.astro";
 import GradientStyles from "@components/GradientStyles.astro";
 import Sidebar from "@components/Sidebar.astro";
+
+//
+
+import {} from "astro:transitions";
 ---
 
 <!doctype html>
@@ -28,8 +32,15 @@ import Sidebar from "@components/Sidebar.astro";
       content="web developer, portfolio, front-end, back-end, full-stack, UI design, responsive websites, PHP, JavaScript, Tailwind CSS, React, NextJS, mySQL, AstroJS, VueJS, Figma, Freelance Web Developer"
     />
 
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+
     <!-- Scripts -->
     <script src="src/js/sidebar.ts"></script>
+    <script src="src/js/gradient.ts"></script>
 
     <title>{title}</title>
   </head>
