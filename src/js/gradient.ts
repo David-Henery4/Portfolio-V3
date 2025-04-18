@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("mousemove", (event) => {
-    tgX = event.clientX;
-    tgY = event.clientY;
+    tgX = event.pageX;
+    tgY = event.pageY;
   });
 
   move();
