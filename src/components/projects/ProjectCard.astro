@@ -2,6 +2,9 @@
 import projectImage from "@assets/placeholders/project-placeholder-image.png";
 import { Image } from "astro:assets";
 import ArrowRight from "@assets/icons/ArrowRight.astro";
+
+const { title, description, tags, projectRepo, projectUrl } = Astro.props;
+console.log(title);
 ---
 
 <article class="w-full">
@@ -14,24 +17,36 @@ import ArrowRight from "@assets/icons/ArrowRight.astro";
   </figure>
 
   <div class="mt-4">
-    <p class="text-[10px] uppercase tracking-wide px-3 py-1.5 bg-white/30 inline rounded-4xl cursor-pointer">Development</p>
+    <div class="w-full flex flex-wrap gap-2">
+      {
+        tags.map(({ category }) => {
+          return (
+            <p class="text-[10px] uppercase tracking-wide px-3 py-1.5 bg-white/30 inline rounded-4xl cursor-pointer">
+              {category}
+            </p>
+          );
+        })
+      }
+    </div>
 
-    <h2 class="text-lg font-semibold mt-3">The Munch Hut</h2>
+    <h2 class="text-lg font-semibold mt-3">{title}</h2>
 
     <p class="text-sm mt-2 line-clamp-4">
-      We've all experienced the chaos of multiple spreadsheets, tracking and
-      insight tools, and scrambling for the right data at the right time.
+      {description}
     </p>
 
     <div class="w-full mt-5 flex justify-start items-center gap-6 text-sm">
-      <a class="inline-flex justify-center items-center gap-1 py-1" href="#">
+      <a
+        class="inline-flex justify-center items-center gap-1 py-1"
+        href={projectRepo}
+      >
         Repo
         <span class="mt-1">
           <ArrowRight />
         </span>
       </a>
       <a
-        href="#"
+        href={projectUrl}
         class="bg-orange py-[6px] px-4 rounded-md hover:bg-orange-shade"
       >
         Live Project
