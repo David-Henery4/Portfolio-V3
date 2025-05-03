@@ -3,10 +3,12 @@
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import ProjectCard from "@components/projects/ProjectCard.astro";
+import type { ProjectType } from "src/types/projects-types";
 
 const res = await fetch("http://localhost:8000/api/projects");
 const { docs } = await res.json();
-console.log(docs);
+const projectData: ProjectType[] = docs
+console.log(projectData);
 // console.log("called Agaain")
 
 // const textGetProjects = async () => {
@@ -47,8 +49,8 @@ console.log(docs);
       class="w-full mt-8 grid grid-cols-projects justify-center gap-y-12 gap-x-8"
     >
       {
-        docs ? (
-          docs.map((project) => <ProjectCard {...project} />)
+        projectData ? (
+          projectData.map((project) => <ProjectCard {...project} />)
         ) : (
           <div>
             <p>No Projects found!</p>

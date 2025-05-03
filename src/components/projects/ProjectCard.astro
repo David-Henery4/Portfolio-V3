@@ -1,9 +1,10 @@
 ---
-import projectImage from "@assets/placeholders/project-placeholder-image.png";
+// import projectImage from "@assets/placeholders/project-placeholder-image.png";
 import { Image } from "astro:assets";
 import ArrowRight from "@assets/icons/ArrowRight.astro";
+import type { ProjectType } from "src/types/projects-types";
 
-const { title, description, tags, projectRepo, projectUrl } = Astro.props;
+const { title, description, tags, projectRepo, projectUrl, projectImage } = Astro.props as ProjectType;
 console.log(title);
 ---
 
@@ -11,7 +12,9 @@ console.log(title);
   <figure class="w-full aspect-video">
     <Image
       class="w-full min-h-56 h-full max-h-80 object-center object-cover"
-      src={projectImage}
+      src={`http://localhost:8000${projectImage?.url}`}
+      width={750}
+      height={640}
       alt="Screenshot of The Munch Hut project"
     />
   </figure>
