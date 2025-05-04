@@ -4,14 +4,15 @@ import { Image } from "astro:assets";
 import ArrowRight from "@assets/icons/ArrowRight.astro";
 import type { ProjectType } from "src/types/projects-types";
 
-const { title, description, tags, projectRepo, projectUrl, projectImage } = Astro.props as ProjectType;
+const { title, description, tags, projectRepo, projectUrl, projectImage } =
+  Astro.props as ProjectType;
 console.log(title);
 ---
 
-<article class="w-full">
-  <figure class="w-full aspect-video">
+<article class="w-full grid grid-rows-card">
+  <figure class="w-full">
     <Image
-      class="w-full min-h-56 h-full max-h-80 object-center object-cover"
+      class="w-full h-64 object-center object-cover"
       src={`http://localhost:8000${projectImage?.url}`}
       width={750}
       height={640}
@@ -19,12 +20,18 @@ console.log(title);
     />
   </figure>
 
-  <div class="mt-4">
-    <div class="w-full flex flex-wrap gap-2">
+  <div class="mt-4 grid grid-rows-cardContent">
+    <h2 class="text-lg font-semibold">{title}</h2>
+
+    <p class="text-sm mt-2 line-clamp-4">
+      {description}
+    </p>
+
+    <div class="w-full flex flex-wrap gap-2 mt-4">
       {
         tags.map(({ category }) => {
           return (
-            <p class="text-[10px] uppercase tracking-wide px-3 py-1.5 bg-white/30 inline rounded-4xl cursor-pointer">
+            <p class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-white/30 inline rounded-4xl cursor-pointer hover:bg-white/85 hover:text-orange">
               {category}
             </p>
           );
@@ -32,15 +39,9 @@ console.log(title);
       }
     </div>
 
-    <h2 class="text-lg font-semibold mt-3">{title}</h2>
-
-    <p class="text-sm mt-2 line-clamp-4">
-      {description}
-    </p>
-
-    <div class="w-full mt-5 flex justify-start items-center gap-6 text-sm">
+    <div class="w-full mt-5 flex justify-start items-center gap-6 text-sm self-end">
       <a
-        class="inline-flex justify-center items-center gap-1 py-1"
+        class="inline-flex justify-center items-center gap-1 py-1 hover:text-orange"
         href={projectRepo}
       >
         Repo

@@ -41,6 +41,8 @@
   
   /* Grid-Rows */
   --grid-template-rows-LGDesktop: min-content;
+  --grid-template-rows-card: min-content;
+  --grid-template-rows-cardContent: repeat(3, min-content);
 }
 
 .header-circle {
