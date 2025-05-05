@@ -2,12 +2,14 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import node from "@astrojs/node";
 // http://localhost:8000
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
   image: {
     remotePatterns: [
       {
@@ -18,4 +20,8 @@ export default defineConfig({
       },
     ],
   },
+
+  adapter: node({
+    mode: "standalone",
+  }),
 });
