@@ -1,0 +1,14 @@
+---
+interface Props {
+  category: string
+  isPills?: boolean;
+}
+const { category, isPills } = Astro.props;
+---
+
+<button
+  data-category={category}
+  class={`hover:text-orange hover:cursor-pointer ${isPills && "text-[10px] tracking-wide uppercase px-3 py-1.5 bg-white/30 inline rounded-4xl hover:bg-white/85"}`}
+>
+  {category}
+</button>

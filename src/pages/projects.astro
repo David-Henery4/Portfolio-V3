@@ -1,28 +1,50 @@
 ---
 export const prerender = false;
-console.log("URL: ",Astro.request.url);
+// console.log("url.searchParams: ", Astro.url.searchParams);
+import FiltersContainer from "@components/reusable/project-filters/FiltersContainer.astro";
+//
+const createQueryString = (key: string, value: string) => {
+  const params = new URLSearchParams(Astro.url.searchParams);
+  console.log("Params: ", params);
+  const previousValues = params.get(key);
+  const combinedValues = `${previousValues},${value}`;
+  if (!previousValues) {
+    params.set(key, value);
+    return params.toString();
+  }
+  if (previousValues.includes(value)) {
+    const combinedValueArray = combinedValues
+      .split(",")
+      .filter((item) => item !== value);
+    console.log("combinedArray:", combinedValueArray);
+    if (combinedValueArray.length) {
+      params.delete(key);
+      return params.toString();
+    }
+    params.set(key, combinedValues);
+    return params.toString();
+  }
+  params.set(key, combinedValues);
+  return params.toString();
+};
+//
+const resultOfParams = createQueryString("name", "Jonathan");
+const resultOfParamsTwo = createQueryString("name", "David");
+console.log("resultOfParams: ", resultOfParams);
+console.log("resultOfParamsTwo: ", resultOfParamsTwo);
+
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import ProjectCard from "@components/projects/ProjectCard.astro";
 import type { ProjectType } from "src/types/projects-types";
 
+// Remember to clean up by:
+// Putting into function
+// Using try/catch for error handling
 const res = await fetch("http://localhost:8000/api/projects");
 const { docs } = await res.json();
 const projectData: ProjectType[] = docs;
 // console.log(projectData);
-// console.log("called Agaain")
-
-// const textGetProjects = async () => {
-//   try {
-//     console.log("called in a function");
-//     const res = await fetch("http://localhost:8000/api/posts");
-//     const data = await res.json();
-//     console.log(data);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// textGetProjects();
 ---
 
 <Layout
@@ -36,15 +58,7 @@ const projectData: ProjectType[] = docs;
       My Projects
     </Heading>
 
-    <div
-      class="w-full max-w-lg mx-auto mt-12 text-sm flex flex-wrap justify-center items-center gap-x-4 gap-y-2"
-    >
-      <a href="#" class="hover:text-orange">Development</a>
-      <a href="#" class="hover:text-orange">React</a>
-      <a href="#" class="hover:text-orange">Design</a>
-      <a href="#" class="hover:text-orange">NextJS</a>
-      <a href="#" class="hover:text-orange">Full Stack</a>
-    </div>
+    <FiltersContainer projectData={projectData} />
 
     <div
       class="w-full mt-10 grid grid-cols-projects justify-center gap-y-12 gap-x-8"
