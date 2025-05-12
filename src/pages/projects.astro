@@ -1,42 +1,23 @@
 ---
 export const prerender = false;
-// console.log("url.searchParams: ", Astro.url.searchParams);
 import FiltersContainer from "@components/reusable/project-filters/FiltersContainer.astro";
-//
-const createQueryString = (key: string, value: string) => {
-  const params = new URLSearchParams(Astro.url.searchParams);
-  console.log("Params: ", params);
-  const previousValues = params.get(key);
-  const combinedValues = `${previousValues},${value}`;
-  if (!previousValues) {
-    params.set(key, value);
-    return params.toString();
-  }
-  if (previousValues.includes(value)) {
-    const combinedValueArray = combinedValues
-      .split(",")
-      .filter((item) => item !== value);
-    console.log("combinedArray:", combinedValueArray);
-    if (combinedValueArray.length) {
-      params.delete(key);
-      return params.toString();
-    }
-    params.set(key, combinedValues);
-    return params.toString();
-  }
-  params.set(key, combinedValues);
-  return params.toString();
-};
-//
-const resultOfParams = createQueryString("name", "Jonathan");
-const resultOfParamsTwo = createQueryString("name", "David");
-console.log("resultOfParams: ", resultOfParams);
-console.log("resultOfParamsTwo: ", resultOfParamsTwo);
-
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
-import ProjectCard from "@components/projects/ProjectCard.astro";
 import type { ProjectType } from "src/types/projects-types";
+import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
+// **** //
+
+// const params = new URLSearchParams(Astro.url.searchParams);
+// console.log("Params: ", params);
+
+// let projectsData: ProjectType[] = [];
+
+// if (params.has("name")) {
+//   console.log("Has name params: ", params.get("name")?.split(","));
+//   projectsData = await getProjects(params.get("name")?.split(","), true);
+// } else {
+//   projectsData = await getProjects();
+// }
 
 // Remember to clean up by:
 // Putting into function
@@ -45,6 +26,7 @@ const res = await fetch("http://localhost:8000/api/projects");
 const { docs } = await res.json();
 const projectData: ProjectType[] = docs;
 // console.log(projectData);
+
 ---
 
 <Layout
@@ -60,25 +42,6 @@ const projectData: ProjectType[] = docs;
 
     <FiltersContainer projectData={projectData} />
 
-    <div
-      class="w-full mt-10 grid grid-cols-projects justify-center gap-y-12 gap-x-8"
-    >
-      {
-        projectData ? (
-          projectData.map((project) => <ProjectCard {...project} />)
-        ) : (
-          <div>
-            <p>No Projects found!</p>
-          </div>
-        )
-      }
-
-      <!-- <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard /> -->
-    </div>
+    <ProjectsContainer />
   </main>
 </Layout>

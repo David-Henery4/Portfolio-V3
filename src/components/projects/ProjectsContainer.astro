@@ -1,0 +1,36 @@
+---
+import type { ProjectType } from "src/types/projects-types";
+import getProjects from "src/queries/getProjects";
+import ProjectCard from "./ProjectCard.astro";
+//
+const params = new URLSearchParams(Astro.url.searchParams);
+console.log("Params: ", params);
+
+let projectsData: ProjectType[] = [];
+
+if (params.has("name")) {
+  console.log("Has name params: ", params.get("name")?.split(","));
+  projectsData = await getProjects(params.get("name")?.split(","), true);
+} else {
+  projectsData = await getProjects();
+}
+
+console.log("Hello");
+
+// data-projectsData={JSON.stringify(projectsData)}
+---
+
+
+<div
+  class="w-full mt-10 grid grid-cols-projects justify-center gap-y-12 gap-x-8"
+>
+  {
+    projectsData ? (
+      projectsData.map((project) => <ProjectCard {...project} />)
+    ) : (
+      <div>
+        <p>No Projects found!</p>
+      </div>
+    )
+  }
+</div>
