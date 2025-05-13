@@ -7,25 +7,11 @@ import type { ProjectType } from "src/types/projects-types";
 import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
 // **** //
 
-// const params = new URLSearchParams(Astro.url.searchParams);
-// console.log("Params: ", params);
-
-// let projectsData: ProjectType[] = [];
-
-// if (params.has("name")) {
-//   console.log("Has name params: ", params.get("name")?.split(","));
-//   projectsData = await getProjects(params.get("name")?.split(","), true);
-// } else {
-//   projectsData = await getProjects();
-// }
-
-// Remember to clean up by:
-// Putting into function
 // Using try/catch for error handling
 const res = await fetch("http://localhost:8000/api/projects");
 const { docs } = await res.json();
 const projectData: ProjectType[] = docs;
-// console.log(projectData);
+
 
 ---
 

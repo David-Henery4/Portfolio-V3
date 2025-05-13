@@ -36,7 +36,7 @@
 
   /* Grid-Columns */  
   --grid-template-columns-skills: repeat(auto-fit, minmax(200px, 1fr));
-  --grid-template-columns-projects: repeat(auto-fit, minmax(250px,.75fr));
+  --grid-template-columns-projects: repeat(auto-fit, minmax(270px,1fr));
   --grid-template-columns-LGDesktop: min-content 1fr;
   
   /* Grid-Rows */

@@ -1,15 +1,13 @@
 ---
-// import projectImage from "@assets/placeholders/project-placeholder-image.png";
 import { Image } from "astro:assets";
 import ArrowRight from "@assets/icons/ArrowRight.astro";
 import type { ProjectType } from "src/types/projects-types";
 
 const { title, description, tags, projectRepo, projectUrl, projectImage, alt } =
   Astro.props as ProjectType;
-// console.log(title);
 ---
 
-  <article class="w-full grid grid-rows-card">
+  <article class="w-full max-w-[375px] grid grid-rows-card">
     <figure class="w-full">
       <Image
         class="w-full h-64 object-center object-cover"
