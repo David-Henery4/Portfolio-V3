@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import ArrowRight from "@assets/icons/ArrowRight.astro";
 import type { ProjectType } from "src/types/projects-types";
+import PillsContainer from "@components/reusable/project-filters/PillsContainer.astro";
 
 const { title, description, tags, projectRepo, projectUrl, projectImage, alt } =
   Astro.props as ProjectType;
@@ -25,17 +26,7 @@ const { title, description, tags, projectRepo, projectUrl, projectImage, alt } =
         {description}
       </p>
 
-      <div class="w-full flex flex-wrap gap-2 mt-4">
-        {
-          tags.map(({ category }) => {
-            return (
-              <p class="text-[10px] tracking-wide uppercase px-3 py-1.5 bg-white/30 inline rounded-4xl cursor-pointer hover:bg-white/85 hover:text-orange">
-                {category}
-              </p>
-            );
-          })
-        }
-      </div>
+      <PillsContainer tags={tags}/>
 
       <div
         class="w-full mt-5 flex justify-start items-center gap-6 text-sm self-end"

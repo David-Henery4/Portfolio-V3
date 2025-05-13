@@ -1,18 +1,21 @@
-const filtersAndPillContainer = document.querySelector(
+const filtersAndPillContainer = document?.querySelectorAll(
   ".filters"
-) as HTMLDivElement;
+);
 import { navigate } from "astro:transitions/client";
 
-filtersAndPillContainer?.addEventListener("click", (e) => {
-  const EVtarget = e.target as HTMLElement;
-  const btnElement = EVtarget.closest("button");
+filtersAndPillContainer.forEach((ele) =>
+  ele?.addEventListener("click", (e) => {
+    const EVtarget = e.target as HTMLElement;
+    const btnElement = EVtarget.closest("button");
 
-  if (btnElement && btnElement.dataset?.category) {
-    const newUrl = createQueryString("name", btnElement.dataset?.category);
-    // window.history.pushState({}, "", `?${newUrl}`);
-    navigate(`/projects${newUrl}`)
-  }
-});
+    if (btnElement && btnElement.dataset?.category) {
+      const newUrl = createQueryString("name", btnElement.dataset?.category);
+      // window.history.pushState({}, "", `?${newUrl}`);
+      navigate(`/projects${newUrl}`);
+    }
+  })
+);
+
 
 const createQueryString = (key: string, value: string) => {
   const currentParams = window.location.search;
