@@ -1,6 +1,6 @@
-const filtersAndPillContainer = document?.querySelectorAll(
-  ".filters"
-);
+const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
+
+const filtersAndPillContainer = document?.querySelectorAll(".filters");
 import { navigate } from "astro:transitions/client";
 
 filtersAndPillContainer.forEach((ele) =>
@@ -15,7 +15,6 @@ filtersAndPillContainer.forEach((ele) =>
     }
   })
 );
-
 
 const createQueryString = (key: string, value: string) => {
   const currentParams = window.location.search;
@@ -48,3 +47,10 @@ const createQueryString = (key: string, value: string) => {
   params.set(key, combinedValues);
   return `?${params.toString()}`;
 };
+
+resetBtn?.addEventListener("click", () => {
+  console.log(window.location.search.length);
+  if (window.location.search.length <= 0) return;
+  new URLSearchParams(window.location.search).delete("name");
+  navigate(`/projects`);
+});

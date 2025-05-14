@@ -19,19 +19,50 @@
 
   /* Colours */
   --color-*: initial;
-  --color-bg1: rgb(108, 0, 162);
+  
+  /* Old Theme values */
+  /* --color-bg1: rgb(108, 0, 162);
   --color-bg2: rgb(0, 17, 82);
   --color1: 18, 113, 255;
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
   --color4: 200, 50, 50;
   --color5: 180, 180, 50;
-  --color-interactive: 140, 100, 255;
+  --color-interactive: 140, 100, 255; */
+
+  /* New Theme Values */
+  --color-bg1: rgb(	216, 64, 91);
+  --color-bg2: rgb(29, 111, 163);    
+  --color1:226, 149, 120;    
+  --color2: 232, 200, 114;
+  --color3: 172, 77, 116;
+  --color4: 198, 52, 136;
+  --color5: 49, 149, 211;
+  --color-interactive: 172, 77, 116; 
+
+  /* New Theme
+  --color-interactive: 252, 92, 156; 
+  --color-bg2: rgb(27, 79, 114);    
+  --color-bg1: rgb(255, 78, 80);
+
+    --color1: 255, 217, 76;    
+    --color2: 255, 126, 95;    
+    --color3: 255, 78, 80;     
+    --color4: 252, 92, 156;  
+    --color5: 86, 204, 242;   
+    --color11: 45, 156, 219;   
+    --color12: 27, 79, 114;    
+  */
+
+
   --circle-size: 80%;
   --blending: hard-light;
   --color-white: #EBF1F4;
   --color-black: #000;
   --color-orange: #EF9A4E;
+  /* #e8d30c */
+  /* #89adf9 */
+  /* --color-orange: #EF9A4E; */
   --color-orange-shade: #EAB27F;
 
   /* Grid-Columns */  
