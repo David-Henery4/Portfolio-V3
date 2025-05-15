@@ -64,6 +64,7 @@
   /* #89adf9 */
   /* --color-orange: #EF9A4E; */
   --color-orange-shade: #EAB27F;
+  --color-error-red: #ff2c2c;
 
   /* Grid-Columns */  
   --grid-template-columns-skills: repeat(auto-fit, minmax(200px, 1fr));
