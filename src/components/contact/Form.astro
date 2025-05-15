@@ -2,6 +2,8 @@
 import { TextInput, SubmitBtn } from "./form-comps";
 ---
 
+<script src="src/js/formValidation.ts"></script>
+
 <form
   id="contact-form"
   class="mt-16 w-full max-w-2xl mx-auto grid gap-9 tablet:gap-x-4"
@@ -34,24 +36,27 @@ import { TextInput, SubmitBtn } from "./form-comps";
 
   <p id="all-required-msg" class="ml-4 text-white">*All fields required</p>
 
-  <div id="success-msg-container" class="hidden col-start-1 col-end-3 text-center">
+  <div
+    id="success-msg-container"
+    class="hidden col-start-1 col-end-3 text-center"
+  >
     <p class="text-white">
       Thank you for submitting! I will be in touch as soon as I can!
     </p>
   </div>
 
-  <div id="submission-error-msg-container" class="hidden col-start-1 col-end-3 text-center">
+  <div
+    id="submission-error-msg-container"
+    class="hidden col-start-1 col-end-3 text-center"
+  >
     <p class="text-white">
       There has been an error submitting the form, please try again later
     </p>
   </div>
 
   <div id="invalid-email-msg" class="hidden col-start-1 col-end-3 text-center">
-    <p class="text-white">
-      Please submit valid email
-    </p>
+    <p class="text-white">Please submit valid email</p>
   </div>
 
   <SubmitBtn />
-
 </form>

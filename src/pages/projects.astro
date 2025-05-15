@@ -11,9 +11,9 @@ import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
 const res = await fetch("http://localhost:8000/api/projects");
 const { docs } = await res.json();
 const projectData: ProjectType[] = docs;
-
-
 ---
+
+<script src="src/js/searchParams.ts"></script>
 
 <Layout
   title="Projects | David Henery | Web Developer"
@@ -29,7 +29,10 @@ const projectData: ProjectType[] = docs;
     <FiltersContainer projectData={projectData} />
 
     <div class="mx-auto my-6 grid place-items-center">
-      <button id="reset-btn" class="text-orange w-fit inline font-semibold tracking-wider text-base hover:cursor-pointer hover:text-orange-shade">
+      <button
+        id="reset-btn"
+        class="text-orange w-fit inline font-semibold tracking-wider text-base hover:cursor-pointer hover:text-orange-shade"
+      >
         Reset Filters
       </button>
     </div>
