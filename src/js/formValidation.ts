@@ -31,6 +31,8 @@ interface ErrorObject {
 
 let errorsList: ErrorObject[] = [];
 
+
+
 contactFormElement.addEventListener("submit", (e) => {
   e.preventDefault();
   submissionErrorMsgContainer.classList.replace("block", "hidden");
@@ -52,18 +54,9 @@ contactFormElement.addEventListener("submit", (e) => {
   }
 
   // On Success
+  handleFormSubmission();
 
-  // handleFormSubmission();
-
-
-  // console.log("Form Submitted");
-  // reqMsgEle.classList.replace("text-error-red", "text-white");
-  // reqMsgEle.classList.add("hidden");
-  // submitBtn.disabled = true;
-  // successMsgContainer.classList.replace("hidden", "block");
 });
-
-
 
 
 const handleValidation = (input: [string, FormDataEntryValue]) => {
@@ -89,15 +82,11 @@ const handleValidation = (input: [string, FormDataEntryValue]) => {
 };
 
 
-
-
 const handleEmailValidation = (email: string) => {
   return !new RegExp(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   ).test(email);
 };
-
-
 
 
 const handleValidationStyles = ({ name, isInvalid }: ErrorObject) => {
@@ -111,11 +100,9 @@ const handleValidationStyles = ({ name, isInvalid }: ErrorObject) => {
 };
 
 
+const handleFormSubmission = async () => {
 
-
-const handleFormSubmission = async (formEle?: HTMLFormElement) => {
-
-  const formData = new FormData(formEle);
+  const formData = new FormData(contactFormElement);
   const envAccess = import.meta.env.PUBLIC_WEB3_FORM_ACCESS_KEY;
 
   if (!envAccess) return
@@ -136,7 +123,6 @@ const handleFormSubmission = async (formEle?: HTMLFormElement) => {
   const result = await submittedResponse.json();
 
   if (result.success) {
-    console.log("Form Submitted");
     submissionErrorMsgContainer.classList.replace("block", "hidden");
     reqMsgEle.classList.replace("text-error-red", "text-white");
     reqMsgEle.classList.add("hidden");
