@@ -2,7 +2,22 @@
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import SkillContainer from "@components/skills/SkillContainer.astro";
-import skillsData from "@local-data/skillsData";
+// import skillsData from "@local-data/skillsData";
+
+interface SkillsList {
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  skillIcon: string;
+  id: string;
+};
+
+// Using try/catch for error handling
+const res = await fetch("http://localhost:8000/api/skills-list?pagination=false");
+const { docs } = await res.json();
+
+const skillsList: SkillsList[] = docs;
+
 ---
 
 <Layout
@@ -15,7 +30,7 @@ import skillsData from "@local-data/skillsData";
     <Heading headingType="primary" classes={["text-center"]}> Skills </Heading>
     <div class="w-full mt-10 grid gap-6 grid-cols-skills">
       {
-        skillsData.map((skill) => {
+        skillsList.map((skill) => {
           return <SkillContainer {...skill} />;
         })
       }
