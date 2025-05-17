@@ -10,14 +10,15 @@ interface SkillsList {
   title: string;
   skillIcon: string;
   id: string;
-};
+}
 
 // Using try/catch for error handling
-const res = await fetch("http://localhost:8000/api/skills-list?pagination=false");
+const res = await fetch(
+  "http://localhost:8000/api/skills-list?pagination=false&sort=order"
+);
 const { docs } = await res.json();
 
 const skillsList: SkillsList[] = docs;
-
 ---
 
 <Layout
