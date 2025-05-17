@@ -3,16 +3,40 @@ interface Props {
   classes?: string[];
 }
 import socialData from "@local-data/socialData";
+
+interface LinksList {
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  link: string;
+  icon: string;
+}
+
+// Using try/catch for error handling
+const res = await fetch("http://localhost:8000/api/links");
+const { docs } = await res.json();
+console.log("Links: ", docs);
+
+const linksList: LinksList[] = docs;
+
 const { classes } = Astro.props;
 ---
 
 <div class="flex justify-center items-center gap-6">
   {
-    socialData.map((social) => {
+    linksList.map((social) => {
       return (
-        <a href={social.url} class="w-10 h-10" class:list={classes}>
-          <span class="sr-only">{social.title}</span>
-          {<social.icon />}
+        <a
+          aria-label={social.name}
+          target="_blank"
+          rel="noopener noreferrer"
+          href={social.link}
+          class="w-10 h-10"
+          class:list={classes}
+        >
+          <span class="sr-only">{social.name}</span>
+          <Fragment set:html={social.icon} />
+          {/* {<social.icon />} */}
         </a>
       );
     })
