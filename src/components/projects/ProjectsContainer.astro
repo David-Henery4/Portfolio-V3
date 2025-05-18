@@ -6,7 +6,20 @@ import ProjectCard from "./ProjectCard.astro";
 const params = new URLSearchParams(Astro.url.searchParams);
 console.log("Params: ", params);
 
-let projectsData: ProjectType[] = [];
+interface ProjectsAndPagData {
+  docs: ProjectType[];
+  totalDocs: number | null;
+  limit: number | null;
+  totalPages: number | null;
+  page: number | null;
+  pagingCounter: number | null;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}
+
+let projectsData: ProjectsAndPagData;
 
 if (params.has("name")) {
   console.log("Has name params: ", params.get("name")?.split(","));
@@ -15,6 +28,8 @@ if (params.has("name")) {
   projectsData = await getProjects();
 }
 
+const {docs: projectsList} = projectsData
+
 // data-projectsData={JSON.stringify(projectsData)}
 ---
 
@@ -22,8 +37,8 @@ if (params.has("name")) {
   class="w-full mt-10 grid grid-cols-projects justify-center justify-items-center gap-y-12 gap-x-8"
 >
   {
-    projectsData ? (
-      projectsData.map((project) => <ProjectCard {...project} />)
+    projectsList ? (
+      projectsList.map((project) => <ProjectCard {...project} />)
     ) : (
       <div>
         <p>No Projects found!</p>
@@ -31,3 +46,4 @@ if (params.has("name")) {
     )
   }
 </div>
+

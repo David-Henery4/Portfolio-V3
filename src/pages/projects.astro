@@ -3,14 +3,14 @@ export const prerender = false;
 import FiltersContainer from "@components/reusable/project-filters/FiltersContainer.astro";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
-import type { ProjectType } from "src/types/projects-types";
+// import type { ProjectType } from "src/types/projects-types";
 import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
 // **** //
 
 // Using try/catch for error handling
-const res = await fetch("http://localhost:8000/api/projects");
-const { docs } = await res.json();
-const projectData: ProjectType[] = docs;
+// const res = await fetch("http://localhost:8000/api/projects");
+// const result = await res.json();
+// console.log("Tesing Res: ", result);
 ---
 
 <script src="src/js/searchParams.ts"></script>
@@ -26,7 +26,7 @@ const projectData: ProjectType[] = docs;
       My Projects
     </Heading>
 
-    <FiltersContainer projectData={projectData} />
+    <FiltersContainer />
 
     <div class="mx-auto my-6 grid place-items-center">
       <button
