@@ -15,7 +15,7 @@ interface LinksList {
 // Using try/catch for error handling
 const res = await fetch("http://localhost:8000/api/links");
 const { docs } = await res.json();
-console.log("Links: ", docs);
+// console.log("Links: ", docs);
 
 const linksList: LinksList[] = docs;
 

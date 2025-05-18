@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import FiltersContainer from "@components/reusable/project-filters/FiltersContainer.astro";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
@@ -30,7 +31,7 @@ const projectData: ProjectType[] = docs;
     <div class="mx-auto my-6 grid place-items-center">
       <button
         id="reset-btn"
-        class="text-orange w-fit inline font-semibold tracking-wider text-base hover:cursor-pointer hover:text-orange-shade"
+        class="text-white px-4 py-1 bg-orange rounded w-fit inline font-semibold tracking-wider text-base hover:cursor-pointer hover:bg-orange-shade active:bg-orange"
       >
         Reset Filters
       </button>

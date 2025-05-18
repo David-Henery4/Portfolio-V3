@@ -49,7 +49,6 @@ const createQueryString = (key: string, value: string) => {
 };
 
 resetBtn?.addEventListener("click", () => {
-  console.log(window.location.search.length);
   if (window.location.search.length <= 0) return;
   new URLSearchParams(window.location.search).delete("name");
   navigate(`/projects`);
