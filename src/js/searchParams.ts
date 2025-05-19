@@ -74,13 +74,9 @@ paginationContainer.addEventListener("click", (ev) => {
   const evTarget = ev.target as HTMLElement;
   const btnElement = evTarget.closest("button");
   if (btnElement && btnElement.dataset?.pagenum) {
-    // console.log(btnElement);
-    const newUrl = createQueryString(
-      "page",
-      btnElement.dataset?.pagenum,
-      new URLSearchParams(window.location.search)
-    );
-    // console.log(newUrl)
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set("page", btnElement.dataset?.pagenum);
+    const newUrl = `?${currentParams.toString()}`;
     navigate(`/projects${newUrl}`);
   }
 });
