@@ -1,31 +1,14 @@
-import { stringify } from "qs-esm";
 // import type { ProjectType } from "src/types/projects-types";
+import createProjectsUrlstring from "./createProjectsUrlstring";
 
-const getProjects = async (queries?: string[], isFiltered: boolean = false) => {
+const getProjects = async (params: URLSearchParams | null = null) => {
 
-  if (isFiltered){
-    const stringifiedQuery = stringify(
-      {
-        where: {
-          "tags.category": {
-            in: queries,
-          }
-        },
-      },
-      {
-        addQueryPrefix: true
-      }
-    )
-    const res = await fetch(`http://localhost:8000/api/projects${stringifiedQuery}`);
-    const projectData = await res.json();
-    // const projectData: ProjectType[] = docs;
-    return projectData
-  }
-  
-  const res = await fetch("http://localhost:8000/api/projects");
+  const urlString = createProjectsUrlstring(params)
+
+  const res = await fetch(urlString);
   const projectData = await res.json();
   // const projectData: ProjectType[] = docs;
   return projectData;
-}
+};
 
 export default getProjects

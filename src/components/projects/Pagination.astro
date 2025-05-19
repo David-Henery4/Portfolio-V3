@@ -1,0 +1,59 @@
+---
+interface Props {
+  totalDocs: number | null;
+  limit: number | null;
+  totalPages: number | null;
+  page: number | null;
+  pagingCounter: number | null;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}
+
+const { hasNextPage, hasPrevPage, totalPages, prevPage, nextPage, page } =
+  Astro.props;
+
+const generatePageNumbers = (): number[] => {
+  if (!totalPages) return [];
+
+  let pageNumbers: number[] = [];
+
+  for (let index = 0; index < totalPages; index++) {
+    pageNumbers.push(index + 1);
+  }
+
+  return pageNumbers;
+};
+---
+
+<div
+  id="pagination-container"
+  class="w-full flex justify-center items-center mt-6 gap-12"
+>
+  <button
+    class="active:text-white hover:cursor-pointer hover:text-orange hover:disabled:text-white disabled:opacity-25 hover:disabled:cursor-auto"
+    data-pagenum={prevPage}
+    disabled={!hasPrevPage}>Prev</button
+  >
+
+  <div class="flex justify-center items-center gap-6">
+    {
+      generatePageNumbers().map((pageNumber) => (
+        <button
+          class="px-2 rounded border active:text-white hover:cursor-pointer hover:text-orange hover:disabled:text-white disabled:opacity-25 hover:disabled:cursor-auto"
+          data-pagenum={pageNumber}
+          disabled={page === pageNumber}
+        >
+          {pageNumber}
+        </button>
+      ))
+    }
+  </div>
+
+  <button
+    class="active:text-white hover:cursor-pointer hover:text-orange hover:disabled:text-white disabled:opacity-25 hover:disabled:cursor-auto"
+    data-pagenum={nextPage}
+    disabled={!hasNextPage}>Next</button
+  >
+</div>

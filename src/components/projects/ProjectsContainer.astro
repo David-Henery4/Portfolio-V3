@@ -2,9 +2,10 @@
 import type { ProjectType } from "src/types/projects-types";
 import getProjects from "src/queries/getProjects";
 import ProjectCard from "./ProjectCard.astro";
+import Pagination from "./Pagination.astro";
 //
 const params = new URLSearchParams(Astro.url.searchParams);
-console.log("Params: ", params);
+// console.log("Params: ", params);
 
 interface ProjectsAndPagData {
   docs: ProjectType[];
@@ -21,14 +22,14 @@ interface ProjectsAndPagData {
 
 let projectsData: ProjectsAndPagData;
 
-if (params.has("name")) {
-  console.log("Has name params: ", params.get("name")?.split(","));
-  projectsData = await getProjects(params.get("name")?.split(","), true);
+if (params) {
+  projectsData = await getProjects(params);
 } else {
   projectsData = await getProjects();
 }
 
-const {docs: projectsList} = projectsData
+const { docs: projectsList, ...pagData } = projectsData;
+
 
 // data-projectsData={JSON.stringify(projectsData)}
 ---
@@ -47,3 +48,4 @@ const {docs: projectsList} = projectsData
   }
 </div>
 
+<Pagination {...pagData} />
