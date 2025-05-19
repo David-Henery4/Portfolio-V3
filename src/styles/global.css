@@ -83,6 +83,10 @@
   clip-path: inset(-30% 0% 0% 0% round 0% 0% 50% 50%);
 }
 
+.default-bg-gradient{
+  background: linear-gradient(to top right, var(--color-bg1), var(--color-bg2));
+}
+
 /** REMOVE INPUT HISTORY **/
 input:-webkit-autofill,
 input:-webkit-autofill:focus {

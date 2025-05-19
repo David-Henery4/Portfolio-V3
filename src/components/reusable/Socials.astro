@@ -2,7 +2,6 @@
 interface Props {
   classes?: string[];
 }
-import socialData from "@local-data/socialData";
 
 interface LinksList {
   createdAt: string;
@@ -15,7 +14,6 @@ interface LinksList {
 // Using try/catch for error handling
 const res = await fetch("http://localhost:8000/api/links");
 const { docs } = await res.json();
-// console.log("Links: ", docs);
 
 const linksList: LinksList[] = docs;
 

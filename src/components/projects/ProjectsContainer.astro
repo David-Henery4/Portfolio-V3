@@ -5,7 +5,6 @@ import ProjectCard from "./ProjectCard.astro";
 import Pagination from "./Pagination.astro";
 //
 const params = new URLSearchParams(Astro.url.searchParams);
-// console.log("Params: ", params);
 
 interface ProjectsAndPagData {
   docs: ProjectType[];
@@ -30,8 +29,6 @@ if (params) {
 
 const { docs: projectsList, ...pagData } = projectsData;
 
-
-// data-projectsData={JSON.stringify(projectsData)}
 ---
 
 <div

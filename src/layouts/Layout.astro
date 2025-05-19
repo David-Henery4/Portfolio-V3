@@ -13,7 +13,6 @@ const {
 import Navbar from "../components/Navbar.astro";
 import GradientStyles from "@components/GradientStyles.astro";
 import Sidebar from "@components/Sidebar.astro";
-
 ---
 
 <!doctype html>
@@ -35,14 +34,13 @@ import Sidebar from "@components/Sidebar.astro";
       }
     </style>
 
-
     <!-- Scripts -->
     <script src="src/js/sidebar.ts"></script>
     <script src="src/js/gradient.ts"></script>
 
     <title>{title}</title>
   </head>
-  <body class="relative min-h-[100svh] text-white bg-bg2">
+  <body class="relative min-h-[100svh] text-white default-bg-gradient">
     <div
       class="relative w-full lgDesktop:max-w-[1440px] lgDesktop:mx-auto lgDesktop:grid lgDesktop:grid-cols-LGDesktop lgDesktop:grid-rows-LGDesktop lgDesktop:pt-12"
     >
