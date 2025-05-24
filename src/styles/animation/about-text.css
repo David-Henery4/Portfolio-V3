@@ -1,0 +1,22 @@
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    /* transform: translate3d(0px, 0px, 0px); */
+    /* transform: translate(-100%, -100%) rotate(45deg); */
+  }
+  100% {
+    opacity: 1;
+    /* transform: translate(0px, 0px); */
+    /* transform: translate(0%, 0%) rotate(45deg); */
+  }
+}
+
+.fadeInUp-animation {
+  /* transform-origin: 0% 0%; */
+  animation: 1.5s fadeInUp;
+  transform-origin: top left;
+  /* transition: max-height 0.3s ease; */
+}
+
+
+

@@ -29,3 +29,17 @@ animate(".circle-white", {
 });
 
 
+// TEXT ANIMATION
+
+// const firstWordElement = document.querySelector(".word") as HTMLSpanElement
+// const wordsContainerElement = document.querySelector(
+//   ".words-container"
+// ) as HTMLSpanElement;
+
+// const observer = new ResizeObserver(() => {
+//   const newHeight = firstWordElement.offsetHeight + 16
+//   console.log(newHeight)
+//   wordsContainerElement.style.height= `${newHeight}px`
+// })
+
+// observer.observe(firstWordElement)

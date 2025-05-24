@@ -1,27 +1,46 @@
-.main-circle-container {
+
+
+/* .heading-text-wrapper{
+  overflow: hidden;
+} */
+
+
+
+
+
+.word{
+  /* border: 2px solid var(--color-orange); */
+  animation: spin_words 12s infinite 2s;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* line-height: 164px; */
 }
 
-.circle {
+@keyframes spin_words {
+  10%{
+    transform: translateY(-112%);
+  }
+  25%{
+    transform: translateY(-100%);
+  }
+  35%{
+    transform: translateY(-212%);
+  }
+  50%{
+    transform: translateY(-200%);
+  }
+  60%{
+    transform: translateY(-312%);
+  }
+  75%{
+    transform: translateY(-300%);
+  }
+  85%{
+    transform: translateY(-412%);
+  }
+  100%{
+    transform: translateY(-400%);
+  }
 }
-
-.circle-container {
-}
-.circle-white {
-}
-.circle-dark {
-}
-
-.image-container{}
-
-.image{}
-
-.image-left{
-
-}
-
-.circle-dark-dashed{
-  
-}
-
-
-

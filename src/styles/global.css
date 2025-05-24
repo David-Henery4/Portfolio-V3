@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./gradient/gradient.css";
+@import "./animation/about-text.css";
+@import "./animation/homeAnimation.css";
 
 @theme {
   /* Breakpoints */
