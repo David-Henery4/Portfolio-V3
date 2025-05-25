@@ -1,24 +1,39 @@
 
-
-/* .heading-text-wrapper{
-  overflow: hidden;
-} */
-
-
-
-
-
 .word{
-  /* border: 2px solid var(--color-orange); */
-  animation: spin_words 12s infinite 2s;
+  animation: spin_words 10s infinite 2.5s;
   height: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  /* line-height: 164px; */
+  display: grid;
+  place-items: center;
 }
 
 @keyframes spin_words {
+  18%{
+    transform: translateY(-112%);
+  }
+  33.3%{
+    transform: translateY(-100%);
+  }
+
+  51%{
+    transform: translateY(-212%);
+  }
+  66.6%{
+    transform: translateY(-200%);
+  }
+
+  85%{
+    transform: translateY(-312%);
+  }
+  100%{
+    transform: translateY(-300%);
+  }
+}
+
+
+/* 
+
+  ** OLD ~ WAS BEING USED FOR 4 ITEMS **
+
   10%{
     transform: translateY(-112%);
   }
@@ -43,4 +58,6 @@
   100%{
     transform: translateY(-400%);
   }
-}
+
+
+*/
