@@ -1,22 +1,32 @@
-@keyframes fadeInUp {
+
+.about-body {
+  -webkit-mask-image: linear-gradient(to left, #0000 25%, #000 75%);
+  -webkit-mask-size: 500%;
+  animation: text-wipe 1s linear;
+}
+
+@keyframes text-wipe {
+  0% {
+    -webkit-mask-position: 100%;
+  }
+
+  100% {
+    -webkit-mask-position: 0%;
+  }
+}
+
+.fade-in-ani{
+  opacity: 1;
+  animation:fade-in 1s ease-in-out;
+}
+
+
+@keyframes fade-in{
   0% {
     opacity: 0;
-    /* transform: translate3d(0px, 0px, 0px); */
-    /* transform: translate(-100%, -100%) rotate(45deg); */
   }
+
   100% {
     opacity: 1;
-    /* transform: translate(0px, 0px); */
-    /* transform: translate(0%, 0%) rotate(45deg); */
   }
 }
-
-.fadeInUp-animation {
-  /* transform-origin: 0% 0%; */
-  animation: 1.5s fadeInUp;
-  transform-origin: top left;
-  /* transition: max-height 0.3s ease; */
-}
-
-
-
