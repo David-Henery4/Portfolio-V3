@@ -41,3 +41,10 @@ export interface ProjectsAndPagData {
   prevPage: number | null;
   nextPage: number | null;
 }
+
+export interface FiltersList {
+  tags: {
+    category: string;
+    id: string;
+  }[];
+}
