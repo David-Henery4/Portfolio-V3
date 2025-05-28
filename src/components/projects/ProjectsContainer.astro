@@ -1,48 +1,40 @@
 ---
-import type { ProjectType } from "src/types/projects-types";
+import type { ProjectsAndPagData } from "src/types/projects-types";
 import getProjects from "src/queries/getProjects";
 import ProjectCard from "./ProjectCard.astro";
 import Pagination from "./Pagination.astro";
 //
 const params = new URLSearchParams(Astro.url.searchParams);
 
-interface ProjectsAndPagData {
-  docs: ProjectType[];
-  totalDocs: number | null;
-  limit: number | null;
-  totalPages: number | null;
-  page: number | null;
-  pagingCounter: number | null;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-  prevPage: number | null;
-  nextPage: number | null;
-}
+const projectsData: ProjectsAndPagData | null = params
+  ? await getProjects(params)
+  : await getProjects();
 
-let projectsData: ProjectsAndPagData;
+// 98,95,100,91
+// Preview/build version mobile: 97,95,100,100
+// Preview/build version DESKTOP: 100,95,100,100
+// Preview/build version LAPTOP: 100,95,100,100
+// Preview/build version TABLET:  97,95,100,100
 
-if (params) {
-  projectsData = await getProjects(params);
-} else {
-  projectsData = await getProjects();
-}
-
-const { docs: projectsList, ...pagData } = projectsData;
-
+// THIS WHOLE PROJECT NEEDS TO BE DONE TOMORROW (Finished & deployed!)
 ---
 
-<div
-  class="w-full mt-10 grid grid-cols-projects justify-center justify-items-center gap-y-12 gap-x-8"
->
-  {
-    projectsList ? (
-      projectsList.map((project) => <ProjectCard {...project} />)
-    ) : (
-      <div>
-        <p>No Projects found!</p>
-      </div>
-    )
-  }
-</div>
+{
+  !projectsData ? (
+    <div>
+      <p>There has been an error, please try again later</p>
+    </div>
+  ) : (
+    <div class="w-full mt-10 grid grid-cols-projects justify-center justify-items-center gap-y-12 gap-x-8">
+      {projectsData?.docs ? (
+        projectsData?.docs.map((project) => <ProjectCard {...project} />)
+      ) : (
+        <div>
+          <p>No Projects found!</p>
+        </div>
+      )}
+    </div>
+  )
+}
 
-<Pagination {...pagData} />
+{projectsData && <Pagination {...projectsData} />}

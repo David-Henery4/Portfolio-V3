@@ -27,3 +27,17 @@ export interface ProjectType {
     id: string;
   }[];
 }
+
+
+export interface ProjectsAndPagData {
+  docs: ProjectType[];
+  totalDocs: number | null;
+  limit: number | null;
+  totalPages: number | null;
+  page: number | null;
+  pagingCounter: number | null;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}

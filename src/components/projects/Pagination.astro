@@ -1,15 +1,6 @@
 ---
-interface Props {
-  totalDocs: number | null;
-  limit: number | null;
-  totalPages: number | null;
-  page: number | null;
-  pagingCounter: number | null;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-  prevPage: number | null;
-  nextPage: number | null;
-}
+import type { ProjectsAndPagData } from "src/types/projects-types";
+type Props = ProjectsAndPagData ;
 
 const { hasNextPage, hasPrevPage, totalPages, prevPage, nextPage, page } =
   Astro.props;
