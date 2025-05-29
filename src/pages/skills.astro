@@ -2,23 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import SkillContainer from "@components/skills/SkillContainer.astro";
-// import skillsData from "@local-data/skillsData";
+import getSkills from "src/queries/getSkills"
 
-interface SkillsList {
-  createdAt: string;
-  updatedAt: string;
-  title: string;
-  skillIcon: string;
-  id: string;
-}
+const resTwo = await getSkills()
+const {isError, skillsList} = resTwo
 
-// Using try/catch for error handling
-const res = await fetch(
-  `${import.meta.env.CMS_URL}/api/skills-list?pagination=false&sort=order`
-);
-const { docs } = await res.json();
-
-const skillsList: SkillsList[] = docs;
 ---
 
 <Layout
@@ -31,6 +19,7 @@ const skillsList: SkillsList[] = docs;
     <Heading headingType="primary" classes={["text-center"]}> Skills </Heading>
     <div class="w-full mt-10 grid gap-6 grid-cols-skills">
       {
+        isError ? <p class="text-center py-20">Sorry the Skills are not available at the moment</p> :
         skillsList.map((skill) => {
           return <SkillContainer {...skill} />;
         })

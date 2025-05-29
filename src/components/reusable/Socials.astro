@@ -1,42 +1,35 @@
 ---
+import getSocials from "src/queries/getSocials";
 interface Props {
   classes?: string[];
 }
 
-interface LinksList {
-  createdAt: string;
-  updatedAt: string;
-  name: string;
-  link: string;
-  icon: string;
-}
-
-// Using try/catch for error handling
-const res = await fetch(`${import.meta.env.CMS_URL}/api/links`);
-const { docs } = await res.json();
-
-const linksList: LinksList[] = docs;
+const { isError, socialsList } = await getSocials();
 
 const { classes } = Astro.props;
 ---
 
 <div class="flex justify-center items-center gap-6">
   {
-    linksList.map((social) => {
-      return (
-        <a
-          aria-label={social.name}
-          target="_blank"
-          rel="noopener noreferrer"
-          href={social.link}
-          class="w-10 h-10"
-          class:list={classes}
-        >
-          <span class="sr-only">{social.name}</span>
-          <Fragment set:html={social.icon} />
-          {/* {<social.icon />} */}
-        </a>
-      );
-    })
+    isError ? (
+      <span class="w-10 h-10 rounded-full bg-white/25" />
+    ) : (
+      socialsList.map((social) => {
+        return (
+          <a
+            aria-label={social.name}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={social.link}
+            class="w-10 h-10"
+            class:list={classes}
+          >
+            <span class="sr-only">{social.name}</span>
+            <Fragment set:html={social.icon} />
+            {/* {<social.icon />} */}
+          </a>
+        );
+      })
+    )
   }
 </div>
