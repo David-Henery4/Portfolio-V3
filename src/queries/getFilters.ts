@@ -20,7 +20,7 @@ const getFilters = async (): Promise<GetFiltersReturn> => {
     );
 
     const res = await fetch(
-      `http://localhost:8000/api/projects${stringifiedQuery}`
+      `${import.meta.env.CMS_URL}/api/projects${stringifiedQuery}`
     );
     const { docs } = await res.json();
     const projectData: FiltersList[] = docs;

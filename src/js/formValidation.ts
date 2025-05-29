@@ -111,7 +111,7 @@ const handleFormSubmission = async () => {
 
   const jsonFormObject = JSON.stringify(Object.fromEntries(formData));
 
-  const submittedResponse = await fetch("https://api.web3forms.com/submit", {
+  const submittedResponse = await fetch(import.meta.env.PUBLIC_WEB3FORMS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

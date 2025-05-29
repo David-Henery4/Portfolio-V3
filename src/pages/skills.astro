@@ -14,7 +14,7 @@ interface SkillsList {
 
 // Using try/catch for error handling
 const res = await fetch(
-  "http://localhost:8000/api/skills-list?pagination=false&sort=order"
+  `${import.meta.env.CMS_URL}/api/skills-list?pagination=false&sort=order`
 );
 const { docs } = await res.json();
 

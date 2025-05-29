@@ -2,7 +2,7 @@ import { stringify } from "qs-esm";
 
 const createProjectsUrlstring = (params: URLSearchParams | null = null) => {
   
-  const baseUrl = "http://localhost:8000/api/projects";
+  const baseUrl = `${import.meta.env.CMS_URL}/api/projects`;
   
   if (params){
     

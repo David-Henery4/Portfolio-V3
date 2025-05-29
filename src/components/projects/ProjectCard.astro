@@ -8,45 +8,45 @@ const { title, description, tags, projectRepo, projectUrl, projectImage, alt } =
   Astro.props as ProjectType;
 ---
 
-  <article class="w-full max-w-[375px] grid grid-rows-card">
-    <figure class="w-full">
-      <Image
-        class="w-full h-64 object-center object-cover"
-        src={`http://localhost:8000${projectImage?.url}`}
-        width={750}
-        height={640}
-        alt={alt}
-        loading="eager"
-      />
-    </figure>
+<article class="w-full max-w-[375px] grid grid-rows-card">
+  <figure class="w-full">
+    <Image
+      class="w-full h-64 object-center object-cover"
+      src={`${import.meta.env.CMS_URL}${projectImage?.url}`}
+      width={750}
+      height={640}
+      alt={alt}
+      loading="eager"
+    />
+  </figure>
 
-    <div class="mt-4 grid grid-rows-cardContent">
-      <h2 class="text-lg font-semibold">{title}</h2>
+  <div class="mt-4 grid grid-rows-cardContent">
+    <h2 class="text-lg font-semibold">{title}</h2>
 
-      <p class="text-sm mt-2 line-clamp-4">
-        {description}
-      </p>
+    <p class="text-sm mt-2 line-clamp-4">
+      {description}
+    </p>
 
-      <PillsContainer tags={tags}/>
+    <PillsContainer tags={tags} />
 
-      <div
-        class="w-full mt-5 flex justify-start items-center gap-6 text-sm self-end"
+    <div
+      class="w-full mt-5 flex justify-start items-center gap-6 text-sm self-end"
+    >
+      <a
+        class="inline-flex justify-center items-center gap-1 py-1 hover:text-orange"
+        href={projectRepo}
       >
-        <a
-          class="inline-flex justify-center items-center gap-1 py-1 hover:text-orange"
-          href={projectRepo}
-        >
-          Repo
-          <span class="mt-1">
-            <ArrowRight />
-          </span>
-        </a>
-        <a
-          href={projectUrl}
-          class="bg-orange py-[6px] px-4 rounded-md hover:bg-orange-shade"
-        >
-          Live Project
-        </a>
-      </div>
+        Repo
+        <span class="mt-1">
+          <ArrowRight />
+        </span>
+      </a>
+      <a
+        href={projectUrl}
+        class="bg-orange py-[6px] px-4 rounded-md hover:bg-orange-shade"
+      >
+        Live Project
+      </a>
     </div>
-  </article>
+  </div>
+</article>
