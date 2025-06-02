@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 import node from "@astrojs/node";
 
 
+import netlify from "@astrojs/netlify";
+
+
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
@@ -26,7 +29,5 @@ export default defineConfig({
     ],
   },
 
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: netlify(),
 });
