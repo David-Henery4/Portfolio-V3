@@ -6,7 +6,7 @@ interface Props {
 const { headingType = "primary", classes } = Astro.props;
 ---
 
-<!-- Might not need most of these -->{
+{
   headingType === "primary" && (
     <h1 class:list={["text-5xl", "font-bold", "font-light", classes, "small-tablet:text-[64px]"]}>
       <slot />
@@ -14,7 +14,6 @@ const { headingType = "primary", classes } = Astro.props;
   )
 }
 
-<!-- Might not need most of these -->
 {
   headingType === "secondary" && (
     <h2>

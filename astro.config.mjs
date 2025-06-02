@@ -18,6 +18,11 @@ export default defineConfig({
         pathname: "/**",
         port: "8000",
       },
+      {
+        protocol: "https",
+        hostname: "portfolio-payload-cms.vercel.app",
+        pathname: "/**",
+      },
     ],
   },
 

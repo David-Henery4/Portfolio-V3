@@ -9,15 +9,6 @@ const params = new URLSearchParams(Astro.url.searchParams);
 const projectsData: ProjectsAndPagData | null = params
   ? await getProjects(params)
   : await getProjects();
-
-// 98,95,100,91
-// Preview/build version mobile: 97,95,100,100
-// Preview/build version DESKTOP: 100,95,100,100
-// Preview/build version LAPTOP: 100,95,100,100
-// Preview/build version TABLET:  97,95,100,100
-
-
-// THIS WHOLE PROJECT NEEDS TO BE DONE TOMORROW (Finished & deployed!)
 ---
 
 {
