@@ -14,22 +14,23 @@ export default defineConfig({
   },
 
   image: {
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "localhost",
-        pathname: "/**",
-        port: "8000",
-      },
-      {
-        protocol: "https",
-        hostname: "portfolio-payload-cms.vercel.app",
-        pathname: "/**",
-      },
-    ],
+    // remotePatterns: [
+    //   {
+    //     protocol: "http",
+    //     hostname: "localhost",
+    //     pathname: "/**",
+    //     port: "8000",
+    //   },
+    //   {
+    //     protocol: "https",
+    //     hostname: "portfolio-payload-cms.vercel.app",
+    //     pathname: "/**",
+    //   },
+    // ],
+    domains: ["portfolio-payload-cms.vercel.app"],
   },
 
   adapter: netlify({
-    imageCDN: false
+    imageCDN: false,
   }),
 });
