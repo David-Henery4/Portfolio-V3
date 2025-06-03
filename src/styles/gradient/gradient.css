@@ -1,19 +1,38 @@
+
 @keyframes moveInCircle {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes moveVertical {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(50%); }
-  100% { transform: translateY(-50%); }
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }
 
 @keyframes moveHorizontal {
-  0% { transform: translateX(-50%) translateY(-10%); }
-  50% { transform: translateX(50%) translateY(10%); }
-  100% { transform: translateX(-50%) translateY(-10%); }
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
 }
 
 html, body {
@@ -23,15 +42,17 @@ html, body {
 }
 
 .gradient-bg {
+  /* height & width were vh & vw, relative now on the body */
   width: 100%;
   height: 100%;
-  position: fixed;
+  /* min-height: 100%; */
+  position: absolute;
   overflow: hidden;
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
   top: 0;
   left: 0;
-  z-index: -1;
-  pointer-events: none;
+  /* Might have to change z-index? */
+  z-index: -1; 
 }
 
 .gradient-bg:before {
@@ -48,6 +69,7 @@ html, body {
   height: 100%;
 }
 
+/* Will add back */
 #svg-grad {
   position: fixed;
   top: 0;
@@ -58,102 +80,132 @@ html, body {
 
 .gradients-container {
   filter: url(#goo) blur(40px);
+  /* background: url("/src/assets/images/noise.svg"); */
   width: 100%;
+  /* height: 100svh; */
   height: 100%;
-}
-
-.g1, .g2, .g3, .g4, .g5, .interactive {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  contain: layout style paint;
-  isolation: isolate;
 }
 
 .g1 {
   position: absolute;
-  background-color: rgba(var(--color1), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color1), 0.8) 0,
+      rgba(var(--color1), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: var(--circle-size);
   height: var(--circle-size);
-  top: 40%;
-  left: 45%;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+
   transform-origin: center center;
   animation: moveVertical 30s ease infinite;
+
   opacity: 1;
 }
 
 .g2 {
   position: absolute;
-  background-color: rgba(var(--color2), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color2), 0.8) 0,
+      rgba(var(--color2), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: var(--circle-size);
   height: var(--circle-size);
-  top: 40%;
-  left: 45%;
-  transform-origin: 20% center;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+
+  transform-origin: calc(50% - 400px);
   animation: moveInCircle 20s reverse infinite;
+
   opacity: 1;
 }
 
 .g3 {
   position: absolute;
-  background-color: rgba(var(--color3), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color3), 0.8) 0,
+      rgba(var(--color3), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: var(--circle-size);
   height: var(--circle-size);
-  top: 60%;
-  left: 20%;
-  transform-origin: 80% center;
+  top: calc(50% - var(--circle-size) / 2 + 200px);
+  left: calc(50% - var(--circle-size) / 2 - 500px);
+
+  transform-origin: calc(50% + 400px);
   animation: moveInCircle 40s linear infinite;
+
   opacity: 1;
 }
 
 .g4 {
   position: absolute;
-  background-color: rgba(var(--color4), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color4), 0.8) 0,
+      rgba(var(--color4), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: var(--circle-size);
   height: var(--circle-size);
-  top: 40%;
-  left: 45%;
-  transform-origin: 30% center;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+
+  transform-origin: calc(50% - 200px);
   animation: moveHorizontal 40s ease infinite;
+
   opacity: 0.7;
 }
 
 .g5 {
   position: absolute;
-  background-color: rgba(var(--color5), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color5), 0.8) 0,
+      rgba(var(--color5), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: calc(var(--circle-size) * 2);
   height: calc(var(--circle-size) * 2);
-  top: 30%;
-  left: 30%;
-  transform-origin: 10% 70%;
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveInCircle 20s ease infinite;
+
   opacity: 1;
 }
 
 .interactive {
   position: absolute;
-  background-color: rgba(var(--color-interactive), 0.8);
-  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
-  mask-image: radial-gradient(circle at center, black 0%, transparent 50%);
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color-interactive), 0.8) 0,
+      rgba(var(--color-interactive), 0) 50%
+    )
+    no-repeat;
   mix-blend-mode: var(--blending);
+
   width: 100%;
   height: 100%;
   top: -50%;
   left: -50%;
+
+
   opacity: 0.7;
 }
