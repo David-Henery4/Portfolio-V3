@@ -1,4 +1,4 @@
-import type { SocialsList, GetSocialsReturn } from "src/types/socials-types";
+import type { SocialsList, GetSocialsReturn } from "../types/socials-types";
 
 
 const getSocials = async (): Promise<GetSocialsReturn> => {

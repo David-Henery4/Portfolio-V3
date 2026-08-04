@@ -1,6 +1,6 @@
 ---
 import FilterBtn from "./btn/FilterBtn.astro";
-import getFilters from "src/queries/getFilters";
+import getFilters from "../../../queries/getFilters";
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const { isError, uniqueTags } = await getFilters();
 if (isError){

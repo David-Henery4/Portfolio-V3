@@ -1,4 +1,4 @@
-import type { GetSkillsReturn, SkillsList } from "src/types/skills-types";
+import type { GetSkillsReturn, SkillsList } from "../types/skills-types";
 
 
 const getSkills = async (): Promise<GetSkillsReturn> => {

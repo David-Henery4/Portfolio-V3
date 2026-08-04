@@ -4,7 +4,8 @@ const paginationContainer = document.getElementById(
 ) as HTMLDivElement;
 
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
-import { navigate } from "astro:transitions/client";
+// import { navigate } from "astro:transitions/client";
+
 
 filtersAndPillContainer.forEach((ele) =>
   ele?.addEventListener("click", (e) => {
@@ -24,7 +25,7 @@ filtersAndPillContainer.forEach((ele) =>
         params
       );
       // window.history.pushState({}, "", `?${newUrl}`);
-      navigate(`/projects${newUrl}`);
+      navigation.navigate(`/projects${newUrl}`);
     }
   })
 );
@@ -66,7 +67,7 @@ const createQueryString = (
 resetBtn?.addEventListener("click", () => {
   if (window.location.search.length <= 0) return;
   new URLSearchParams(window.location.search).delete("name");
-  navigate(`/projects`);
+  navigation.navigate(`/projects`);
 });
 
 // Pagination
@@ -77,6 +78,6 @@ paginationContainer.addEventListener("click", (ev) => {
     const currentParams = new URLSearchParams(window.location.search);
     currentParams.set("page", btnElement.dataset?.pagenum);
     const newUrl = `?${currentParams.toString()}`;
-    navigate(`/projects${newUrl}`);
+    navigation.navigate(`/projects${newUrl}`);
   }
 });

@@ -1,5 +1,5 @@
 import { stringify } from "qs-esm";
-import type { FiltersList } from "src/types/projects-types";
+import type { FiltersList } from "../types/projects-types";
 
 interface GetFiltersReturn {
   isError: boolean;

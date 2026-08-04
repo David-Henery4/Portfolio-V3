@@ -5,11 +5,11 @@ interface Props {
   description: string;
 }
 
-import "src/styles/global.css";
+import "../styles/global.css";
 import "../components/Navbar.astro";
 const {
   title = "David Henery | Web Developer | Portfolio",
-  description = "Portfolio of David Henery, a web developer specializing in modern, responsive websites, UI/UX design, and front-end development.",
+  description = "Portfolio of David Henery, a web developer specializing in modern, responsive websites, UI/UX design, and Full-Stack development.",
 } = Astro.props;
 import Navbar from "../components/Navbar.astro";
 import GradientStyles from "@components/GradientStyles.astro";
@@ -38,8 +38,8 @@ import Sidebar from "@components/Sidebar.astro";
     </style>
 
     <!-- Scripts -->
-    <script src="src/js/sidebar.ts"></script>
-    <script src="src/js/gradient.ts"></script>
+    <script src="/src/js/sidebar.ts"></script>
+    <script src="/src/js/gradient.ts"></script>
 
     <title>{title}</title>
   </head>

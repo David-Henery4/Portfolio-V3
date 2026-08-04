@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import SkillContainer from "@components/skills/SkillContainer.astro";
-import getSkills from "src/queries/getSkills"
+import getSkills from "../queries/getSkills";
 
 const resTwo = await getSkills()
 const {isError, skillsList} = resTwo
