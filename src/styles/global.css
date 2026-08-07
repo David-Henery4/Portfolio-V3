@@ -2,6 +2,7 @@
 @import "./gradient/gradient.css";
 @import "./animation/about-text.css";
 @import "./animation/homeAnimation.css";
+@import "./select-dropdown/select-dropdown.css";
 
 @theme {
   /* Breakpoints */

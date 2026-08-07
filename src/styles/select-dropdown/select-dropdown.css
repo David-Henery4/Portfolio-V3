@@ -1,0 +1,70 @@
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select {
+  width: 100%;
+  max-width: 260px;
+  position: relative;
+  border: 2px solid var(--color-white);
+  padding: 4px;
+  font-size: 14px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+::picker(select) {
+  width: 100%;
+  max-width: 260px;
+  color: var(--color-black);
+  background: var(--color-white);
+  outline: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  top: 14px;
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 10px;
+  transition: 0.4s;
+  text-transform: capitalize;
+}
+
+option:nth-of-type(odd) {
+  background: white;
+}
+
+option:hover,
+option:focus {
+  background: var(--color-orange-shade);
+  cursor: pointer;
+}
+
+option:checked {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+option:checked::checkmark {
+  content: "✔";
+}
+
+option::checkmark {
+  height: 100%;
+  content: " ";
+  /* content: "😂"; */
+  order: 1;
+  margin-left: auto;
+}
+
+/* option:not(:checked)::checkmark {
+visibility: -internal-auto-base(visible, hidden);
+background-color: red;
+content: "👉";
+} */

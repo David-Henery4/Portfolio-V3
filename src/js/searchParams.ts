@@ -6,11 +6,13 @@ const paginationContainer = document.getElementById(
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
 // import { navigate } from "astro:transitions/client";
 
+// const dropdownFilters = document?.querySelectorAll(".dropdown-filter")
+
 
 filtersAndPillContainer.forEach((ele) =>
   ele?.addEventListener("click", (e) => {
     const EVtarget = e.target as HTMLElement;
-    const btnElement = EVtarget.closest("button");
+    const btnElement = EVtarget.closest(".filter")! as HTMLElement;
 
     if (btnElement && btnElement.dataset?.category) {
       const params = new URLSearchParams(window.location.search);

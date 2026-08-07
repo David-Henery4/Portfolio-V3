@@ -1,0 +1,63 @@
+---
+import getFilters from "../../../queries/getFilters";
+const { searchParams } = Astro.url;
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const { isError, uniqueTags } = await getFilters();
+if (isError) {
+  console.log("There has been an error getting the filters!");
+}
+
+const handleActiveFilterStyling = (category: string) => {
+  let isFilterActive = false;
+
+  searchParams
+    .get("name")
+    ?.split(",")
+    .forEach((activeCategory) => {
+      if (activeCategory === category) {
+        isFilterActive = true;
+      }
+    });
+
+  return isFilterActive;
+};
+---
+
+<div
+  class="w-full mt-12 flex flex-col justify-center items-center gap-6 text-center tablet:flex-row tablet:justify-between tablet:text-left"
+>
+  <div>
+    <label for="pet-select">Filter by technologies:</label>
+    <select class="filters mt-2" multiple size="1" name="pets" id="pet-select">
+      <!-- <option disabled value="">--Please Choose An Option--</option> -->
+      {
+        isError
+          ? "Filters unavailable"
+          : uniqueTags.map((category) => (
+              <option
+                class="filter"
+                data-category={category}
+                selected={handleActiveFilterStyling(category)}
+                value={category}
+              >
+                {category}
+              </option>
+            ))
+      }
+      <!-- <option value="dog"> dog </option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option> -->
+    </select>
+  </div>
+  <div class="grid place-items-center tablet:mt-auto">
+    <button
+      id="reset-btn"
+      class="text-white font-sans font-light px-4 py-1 bg-orange rounded w-fit inline text-sm hover:cursor-pointer hover:bg-orange-shade active:bg-orange"
+    >
+      Reset Filters
+    </button>
+  </div>
+</div>

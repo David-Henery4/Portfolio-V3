@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 import FiltersContainer from "@components/reusable/project-filters/FiltersContainer.astro";
+import DropdownFiltersContainer from "@components/reusable/project-filters/DropdownFiltersContainer.astro";
 import Layout from "@layouts/Layout.astro";
 import { Heading } from "@components/reusable/text";
 import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
@@ -19,16 +20,18 @@ import ProjectsContainer from "@components/projects/ProjectsContainer.astro";
       My Projects
     </Heading>
 
-    <FiltersContainer />
+    <DropdownFiltersContainer />
+    
+    <!-- <FiltersContainer /> -->
 
-    <div class="mx-auto my-6 grid place-items-center">
+    <!-- <div class="mx-auto my-6 grid place-items-center">
       <button
         id="reset-btn"
         class="text-white font-sans font-light px-4 py-1 bg-orange rounded w-fit inline text-sm hover:cursor-pointer hover:bg-orange-shade active:bg-orange"
       >
         Reset Filters
       </button>
-    </div>
+    </div> -->
 
     <ProjectsContainer />
   </main>
