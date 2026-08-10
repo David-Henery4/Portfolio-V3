@@ -1,13 +1,11 @@
 const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
-  "pagination-container"
+  "pagination-container",
 ) as HTMLDivElement;
 
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
-// import { navigate } from "astro:transitions/client";
 
 // const dropdownFilters = document?.querySelectorAll(".dropdown-filter")
-
 
 filtersAndPillContainer.forEach((ele) =>
   ele?.addEventListener("click", (e) => {
@@ -24,18 +22,18 @@ filtersAndPillContainer.forEach((ele) =>
       const newUrl = createQueryString(
         "name",
         btnElement.dataset?.category,
-        params
+        params,
       );
       // window.history.pushState({}, "", `?${newUrl}`);
       navigation.navigate(`/projects${newUrl}`);
     }
-  })
+  }),
 );
 
 const createQueryString = (
   key: string,
   value: string,
-  params: URLSearchParams
+  params: URLSearchParams,
 ) => {
   const previousValues = params.get(key);
   const combinedValues = `${previousValues},${value}`;
