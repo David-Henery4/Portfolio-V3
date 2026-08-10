@@ -71,7 +71,7 @@ resetBtn?.addEventListener("click", () => {
 });
 
 // Pagination
-paginationContainer.addEventListener("click", (ev) => {
+paginationContainer?.addEventListener("click", (ev) => {
   const evTarget = ev.target as HTMLElement;
   const btnElement = evTarget.closest("button");
   if (btnElement && btnElement.dataset?.pagenum) {
