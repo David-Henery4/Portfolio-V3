@@ -1,3 +1,16 @@
+document.body.insertAdjacentHTML(
+  "afterbegin",
+  `<div style="
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:99999;
+    background:red;
+    color:white;
+    padding:20px;
+  ">SCRIPT LOADED</div>`,
+);
+
 const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
   "pagination-container",
