@@ -38,7 +38,7 @@ filtersAndPillContainer.forEach((ele) =>
         btnElement.dataset?.category,
         params,
       );
-      window.history.pushState({}, "", `?${newUrl}`);
+      // window.history.pushState({}, "", `?${newUrl}`);
       // navigate(`/projects${newUrl}`);
       navigation.navigate(`/projects${newUrl}`);
     }
