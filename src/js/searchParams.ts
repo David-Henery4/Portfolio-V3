@@ -1,15 +1,15 @@
-document.body.insertAdjacentHTML(
-  "afterbegin",
-  `<div style="
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99999;
-    background:red;
-    color:white;
-    padding:20px;
-  ">SCRIPT LOADED</div>`,
-);
+// document.body.insertAdjacentHTML(
+//   "afterbegin",
+//   `<div style="
+//     position:fixed;
+//     top:0;
+//     left:0;
+//     z-index:99999;
+//     background:red;
+//     color:white;
+//     padding:20px;
+//   ">SCRIPT LOADED</div>`,
+// );
 
 const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
@@ -88,6 +88,18 @@ resetBtn?.addEventListener("click", () => {
 
 // Pagination
 paginationContainer?.addEventListener("click", (ev) => {
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    `<div style="
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:99999;
+      background:green;
+      color:white;
+      padding:20px;
+    ">CLICK HANDLER WORKS</div>`,
+  );
   const evTarget = ev.target as HTMLElement;
   const btnElement = evTarget.closest("button");
   if (btnElement && btnElement.dataset?.pagenum) {
