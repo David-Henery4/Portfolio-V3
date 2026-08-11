@@ -1,19 +1,3 @@
-document.body.insertAdjacentHTML(
-  "afterbegin",
-  `<div style="
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:99999;
-    background:red;
-    color:white;
-    padding:20px;
-  ">
-    Navigation: ${"navigation" in window}<br>
-    Navigate: ${typeof window.navigation?.navigate}
-  </div>`,
-);
-
 const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
   "pagination-container",
@@ -23,6 +7,20 @@ const paginationContainer = document.getElementById(
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
 
 // const dropdownFilters = document?.querySelectorAll(".dropdown-filter")
+
+/**
+ * @param string
+ * Takes a URL String and uses the Navigation API
+ * If the Navigation API isn't available, use the location href as fallback.
+ */
+const navigateAPIFallback = (url: string) => {
+  if (window.navigation) {
+    window.navigation.navigate(url);
+    return;
+  }
+
+  window.location.href = url;
+};
 
 filtersAndPillContainer.forEach((ele) =>
   ele?.addEventListener("click", (e) => {
@@ -43,7 +41,8 @@ filtersAndPillContainer.forEach((ele) =>
       );
       // window.history.pushState({}, "", `?${newUrl}`);
       // navigate(`/projects${newUrl}`);
-      navigation.navigate(`/projects${newUrl}`);
+      // navigation.navigate(`/projects${newUrl}`);
+      navigateAPIFallback(`/projects${newUrl}`);
     }
   }),
 );
@@ -85,8 +84,9 @@ const createQueryString = (
 resetBtn?.addEventListener("click", () => {
   if (window.location.search.length <= 0) return;
   new URLSearchParams(window.location.search).delete("name");
-  navigation.navigate(`/projects`);
+  // navigation.navigate(`/projects`);
   // navigate(`/projects`);
+  navigateAPIFallback(`/projects`);
 });
 
 // Pagination
@@ -97,7 +97,8 @@ paginationContainer?.addEventListener("click", (ev) => {
     const currentParams = new URLSearchParams(window.location.search);
     currentParams.set("page", btnElement.dataset?.pagenum);
     const newUrl = `?${currentParams.toString()}`;
-    navigation.navigate(`/projects${newUrl}`);
+    // navigation.navigate(`/projects${newUrl}`);
     // navigate(`/projects${newUrl}`);
+    navigateAPIFallback(`/projects${newUrl}`);
   }
 });
