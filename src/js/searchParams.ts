@@ -2,6 +2,7 @@ const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
   "pagination-container",
 ) as HTMLDivElement;
+// import { navigate } from "astro:transitions/client";
 
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
 
@@ -24,7 +25,8 @@ filtersAndPillContainer.forEach((ele) =>
         btnElement.dataset?.category,
         params,
       );
-      // window.history.pushState({}, "", `?${newUrl}`);
+      window.history.pushState({}, "", `?${newUrl}`);
+      // navigate(`/projects${newUrl}`);
       navigation.navigate(`/projects${newUrl}`);
     }
   }),
@@ -68,6 +70,7 @@ resetBtn?.addEventListener("click", () => {
   if (window.location.search.length <= 0) return;
   new URLSearchParams(window.location.search).delete("name");
   navigation.navigate(`/projects`);
+  // navigate(`/projects`);
 });
 
 // Pagination
@@ -79,5 +82,6 @@ paginationContainer?.addEventListener("click", (ev) => {
     currentParams.set("page", btnElement.dataset?.pagenum);
     const newUrl = `?${currentParams.toString()}`;
     navigation.navigate(`/projects${newUrl}`);
+    // navigate(`/projects${newUrl}`);
   }
 });
