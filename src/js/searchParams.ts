@@ -86,13 +86,13 @@ filtersAndPillContainer.forEach((ele) => {
 
   ele?.addEventListener("click", (e) => {
 
-    debug("Filter clicked")
-
+    
     const EVtarget = e.target as HTMLElement;
     const btnElement = EVtarget.closest(".filter")! as HTMLElement;
-
+    
     if (btnElement && btnElement.dataset?.category) {
       const params = new URLSearchParams(window.location.search);
+      debug("Filter clicked")
 
       if (params.has("page")) {
         params.delete("page");
