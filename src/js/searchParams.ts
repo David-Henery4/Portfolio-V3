@@ -5,11 +5,10 @@ const paginationContainer = document.getElementById(
 
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
 
-// const dropdownFilters = document?.querySelectorAll(".dropdown-filter")
 
 /**
  * @param string
- * Takes a URL String and uses the Navigation API
+ * Takes a URL String and uses the Navigation API to navigate to the new page.
  * If the Navigation API isn't available, use the location href as fallback.
  */
 const navigateAPIFallback = (url: string) => {
@@ -21,79 +20,42 @@ const navigateAPIFallback = (url: string) => {
   window.location.href = url;
 };
 
-// WAS HERE SOLING THE ISSUE OF THE SELECT NOT INITIALISING THE FILTER FUNCTIONALITY.
-// PROBERLY GOING TO HAVE TO USE THE "CHANGE" EVENT ON THE SELECT.
-
-const debug = (message: string) => {
-  document.body.insertAdjacentHTML(
-    "afterbegin",
-    `<div style="
-      position:fixed;
-      top:${document.querySelectorAll("[data-debug]").length * 30}px;
-      left:0;
-      z-index:99999;
-      background:red;
-      color:white;
-      padding:5px;
-    " data-debug>${message}</div>`,
-  );
-};
 
 filtersAndPillContainer.forEach((ele) => {
-  // if (ele instanceof HTMLSelectElement) {
-  //   ele.addEventListener("change", (e) => {
-  //     const params = new URLSearchParams(window.location.search);
-  //     console.log("Params:", params);
-  //     const EVtarget = e.target as HTMLSelectElement;
-
-  //     // console.log(Array.from(EVtarget.selectedOptions));
-  //     // `?${params.toString()}`
-  //     // `/projects?${params.toString()}`
-  //     // console.log(`/projects${params.toString()}`);
-
-  //     // let selectedFilterValues = ""
-  //     let selectedFilterValues: string[] = []
-
-  //     // console.log(Array.from(EVtarget));
-
-  //     Array.from(EVtarget).map((option) => {
-  //       console.log("called")
-  //       option.addEventListener("click", (item) => {
-  //         console.log("called: 2")
-  //         console.log(item)
-  //       })
-  //     })
-
-  //     // Array.from(EVtarget.selectedOptions).map((selectedOption) => {
-  //       // selectedFilterValues.push(selectedOption.value);
-  //       // selectedFilterValues = selectedOption.value;
-  //     // });
-
-  //     console.log(selectedFilterValues);
-
-  //     // const newUrl = createQueryString(
-  //     //   "name",
-  //     //   selectedFilterValues,
-  //     //   params,
-  //     // );
-
-  //     // console.log(newUrl)
-
-  //     // navigateAPIFallback(`/projects${newUrl}`);
-  //   });
-  //   return;
-  // }
+  if (ele instanceof HTMLSelectElement) {
+    ele.addEventListener("change", (e) => {
+      const params = new URLSearchParams(window.location.search);
+      const EVtarget = e.target as HTMLSelectElement;
+      
+      if (params.has("page")) {
+        params.delete("page");
+      }
+      
+      let selectedFilterValues: string[] = [];
+      
+      Array.from(EVtarget.selectedOptions).map((selectedOption) => {
+        selectedFilterValues.push(selectedOption.value);
+      });
+      
+      if (selectedFilterValues.length <= 0) {
+        if (params.has("name")) {
+          params.delete("name");
+        }
+        navigateAPIFallback(`/projects`);
+        return
+      }
+      params.set("name", selectedFilterValues.join(","));
+      navigateAPIFallback(`/projects?${params.toString()}`);
+    });
+    return;
+  }
 
   ele?.addEventListener("click", (e) => {
-
-    debug("Select clicked")
-    
     const EVtarget = e.target as HTMLElement;
     const btnElement = EVtarget.closest(".filter")! as HTMLElement;
     
     if (btnElement && btnElement.dataset?.category) {
       const params = new URLSearchParams(window.location.search);
-      debug("Option clicked")
 
       if (params.has("page")) {
         params.delete("page");
