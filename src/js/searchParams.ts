@@ -24,6 +24,21 @@ const navigateAPIFallback = (url: string) => {
 // WAS HERE SOLING THE ISSUE OF THE SELECT NOT INITIALISING THE FILTER FUNCTIONALITY.
 // PROBERLY GOING TO HAVE TO USE THE "CHANGE" EVENT ON THE SELECT.
 
+const debug = (message: string) => {
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    `<div style="
+      position:fixed;
+      top:${document.querySelectorAll("[data-debug]").length * 30}px;
+      left:0;
+      z-index:99999;
+      background:red;
+      color:white;
+      padding:5px;
+    " data-debug>${message}</div>`,
+  );
+};
+
 filtersAndPillContainer.forEach((ele) => {
   // if (ele instanceof HTMLSelectElement) {
   //   ele.addEventListener("change", (e) => {
@@ -70,6 +85,9 @@ filtersAndPillContainer.forEach((ele) => {
   // }
 
   ele?.addEventListener("click", (e) => {
+
+    debug("Filter clicked")
+
     const EVtarget = e.target as HTMLElement;
     const btnElement = EVtarget.closest(".filter")! as HTMLElement;
 
