@@ -2,7 +2,6 @@ const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
 const paginationContainer = document.getElementById(
   "pagination-container",
 ) as HTMLDivElement;
-// import { navigate } from "astro:transitions/client";
 
 const filtersAndPillContainer = document?.querySelectorAll(".filters");
 
@@ -22,7 +21,54 @@ const navigateAPIFallback = (url: string) => {
   window.location.href = url;
 };
 
-filtersAndPillContainer.forEach((ele) =>
+// WAS HERE SOLING THE ISSUE OF THE SELECT NOT INITIALISING THE FILTER FUNCTIONALITY.
+// PROBERLY GOING TO HAVE TO USE THE "CHANGE" EVENT ON THE SELECT.
+
+filtersAndPillContainer.forEach((ele) => {
+  // if (ele instanceof HTMLSelectElement) {
+  //   ele.addEventListener("change", (e) => {
+  //     const params = new URLSearchParams(window.location.search);
+  //     console.log("Params:", params);
+  //     const EVtarget = e.target as HTMLSelectElement;
+
+  //     // console.log(Array.from(EVtarget.selectedOptions));
+  //     // `?${params.toString()}`
+  //     // `/projects?${params.toString()}`
+  //     // console.log(`/projects${params.toString()}`);
+
+  //     // let selectedFilterValues = ""
+  //     let selectedFilterValues: string[] = []
+
+  //     // console.log(Array.from(EVtarget));
+
+  //     Array.from(EVtarget).map((option) => {
+  //       console.log("called")
+  //       option.addEventListener("click", (item) => {
+  //         console.log("called: 2")
+  //         console.log(item)
+  //       })
+  //     })
+
+  //     // Array.from(EVtarget.selectedOptions).map((selectedOption) => {
+  //       // selectedFilterValues.push(selectedOption.value);
+  //       // selectedFilterValues = selectedOption.value;
+  //     // });
+
+  //     console.log(selectedFilterValues);
+
+  //     // const newUrl = createQueryString(
+  //     //   "name",
+  //     //   selectedFilterValues,
+  //     //   params,
+  //     // );
+
+  //     // console.log(newUrl)
+
+  //     // navigateAPIFallback(`/projects${newUrl}`);
+  //   });
+  //   return;
+  // }
+
   ele?.addEventListener("click", (e) => {
     const EVtarget = e.target as HTMLElement;
     const btnElement = EVtarget.closest(".filter")! as HTMLElement;
@@ -44,8 +90,8 @@ filtersAndPillContainer.forEach((ele) =>
       // navigation.navigate(`/projects${newUrl}`);
       navigateAPIFallback(`/projects${newUrl}`);
     }
-  }),
-);
+  });
+});
 
 const createQueryString = (
   key: string,

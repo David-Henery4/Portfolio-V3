@@ -27,8 +27,8 @@ const handleActiveFilterStyling = (category: string) => {
   class="w-full mt-12 flex flex-col justify-center items-center gap-6 text-center tablet:flex-row tablet:justify-between tablet:text-left"
 >
   <div>
-    <label for="pet-select">Filter by technologies:</label>
-    <select class="filters mt-2" multiple size="1" name="pets" id="pet-select">
+    <label for="technology-filter-select">Filter by technologies:</label>
+    <select class="filters mt-2" multiple size="1" name="technologies" id="technology-filter-select">
       <!-- <option disabled value="">--Please Choose An Option--</option> -->
       {
         isError
@@ -44,12 +44,6 @@ const handleActiveFilterStyling = (category: string) => {
               </option>
             ))
       }
-      <!-- <option value="dog"> dog </option>
-    <option value="cat">Cat</option>
-    <option value="hamster">Hamster</option>
-    <option value="parrot">Parrot</option>
-    <option value="spider">Spider</option>
-    <option value="goldfish">Goldfish</option> -->
     </select>
   </div>
   <div class="grid place-items-center tablet:mt-auto">
